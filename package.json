@@ -1,0 +1,41 @@
+{
+  "name": "iobroker.pallazza",
+  "version": "0.6.0",
+  "description": "ioBroker pallazza Adapter",
+  "author": {
+    "name": "Marvin Grieger",
+    "email": "mail@marvingrieger.de"
+  },
+  "contributors": [
+    {
+      "name": "Marvin Grieger",
+      "email": "mail@marvingrieger.de"
+    }
+  ],
+  "homepage": "https://github.com/ioBroker/ioBroker.pallazza",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "pallazza",
+    "Smart Home",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ioBroker/ioBroker.pallazza"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2"
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --exit"
+  },
+  "bugs": {
+    "url": "https://github.com/ioBroker/ioBroker.pallazza/issues"
+  },
+  "readmeFilename": "README.md"
+}
