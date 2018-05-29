@@ -5,7 +5,7 @@ This adapter enables to control a HSP 6 PALLAZZA-III 534.08 device in ioBroker.
 ## Changelog
 
 ### 0.0.1
-* Initial release
+* Initial release. The adapter is not functional yet.
 
 ## License
 The MIT License (MIT)

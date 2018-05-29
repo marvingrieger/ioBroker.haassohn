@@ -59,8 +59,8 @@
         "restartAdapters": ["vis"]
     },
     "native": {
-        "fireplaceAddress": "192.168.142.104",
-        "pollingInterval": "30"
+        "fireplaceAddress": "127.0.0.1:4200",
+        "pollingInterval": "5"
     },
     "objects": [
 

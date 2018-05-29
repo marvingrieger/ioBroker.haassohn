@@ -73,13 +73,23 @@
 <!-- you have to put your config page in a div with id adapter-container -->
 <div id="adapter-container">
 
-    <table><tr>
-        <td><img src="haassohn.png"/></td>
-        <td><h3 class="translate">Haas & Sohn adapter settings</h3></td>
-    </tr></table>
+    <table>
+        <tr>
+            <td><img src="haassohn.png"/></td>
+            <td><h3 class="translate">Pallazza adapter settings</h3></td>
+        </tr>
+    </table>
     <p>
-        <span><label for="fireplaceAddress" class="translate">Fireplace IP Address</label></span><input class="value" id="fireplaceAddress"/><br>
-        <span><label for="pollingInterval" class="translate">Polling Interval</label></span><input class="value" id="pollingInterval"/><br>
+        <table>
+            <tr>
+                <td><span><label for="fireplaceAddress" class="translate">Fireplace IP Address</label></span></td>
+                <td><input class="value" id="fireplaceAddress"/><br></td>
+            </tr>
+            <tr>
+                <td><span><label for="pollingInterval" class="translate">Polling Interval</label></span></td>
+                <td><input class="value" id="pollingInterval"/><br></td>
+            </tr>
+        </table>
     </p>
 
     <p class="translate">on save adapter restarts with new config immediately</p>
@@ -87,3 +97,4 @@
 </div>
 
 </html>
+
