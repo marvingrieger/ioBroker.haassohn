@@ -62,7 +62,64 @@
         "fireplaceAddress": "127.0.0.1:4200",
         "pollingInterval": "5"
     },
-    "objects": [
-
+    "instanceObjects": [
+        {
+            "_id": "device",
+            "type": "channel",
+            "common":
+            {
+                "name": "Device information"
+            },
+            "native": {}
+        },
+        {
+          "_id": "device.meta",
+          "type": "channel",
+          "common": {
+            "name": "Meta information"
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.weekprogram",
+          "type": "channel",
+          "common": {
+            "name": "Week program information"
+          },
+          "native": {}
+        },
+        {
+          "_id": "connection",
+          "type": "state",
+          "common": {
+            "role": "indicator.connected",
+            "name": "If connected to device",
+            "type": "boolean",
+            "read": true
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.sw_version",
+          "type": "state",
+          "common": {
+            "name": "Software version",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.prg",
+          "type": "state",
+          "common": {
+            "name": "Unknown",
+            "type": "boolean",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        }
     ]
 }

@@ -84,41 +84,20 @@ adapter.on('message', function (obj) {
 // is called when databases are connected and adapter received configuration.
 // start here!
 adapter.on('ready', function () {
-    main();
+    initialize();
 });
 
-function main() {
-
+function initialize() {
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
-    adapter.log.info('config test1: '    + adapter.config.test1);
-    adapter.log.info('config test1: '    + adapter.config.test2);
-    adapter.log.info('config mySelect: ' + adapter.config.mySelect);
+    adapter.log.debug('config fireplaceAddress: '    + adapter.config.fireplaceAddress);
+    adapter.log.debug('config pollingInterval: '    + adapter.config.pollingInterval);
 
-
-    /**
-     *
-     *      For every state in the system there has to be also an object of type state
-     *
-     *      Here a simple pallazza for a boolean variable named "testVariable"
-     *
-     *      Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-     *
-     */
-
-    adapter.setObject('testVariable', {
-        type: 'state',
-        common: {
-            name: 'testVariable',
-            type: 'boolean',
-            role: 'indicator'
-        },
-        native: {}
-    });
+    // Instantiate the device
+    createDevice();
 
     // in this pallazza all states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
-
 
     /**
      *   setState examples
@@ -127,6 +106,7 @@ function main() {
      *
      */
 
+    /*
     // the variable testVariable is set to true as command (ack=false)
     adapter.setState('testVariable', true);
 
@@ -147,7 +127,29 @@ function main() {
     adapter.checkGroup('admin', 'admin', function (res) {
         console.log('check group user admin group admin: ' + res);
     });
+    */
+}
 
-
-
+function createDevice()
+{
+    /**
+     *
+     *      For every state in the system there has to be also an object of type state
+     *
+     *      Here a simple pallazza for a boolean variable named "testVariable"
+     *
+     *      Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
+     *
+     */
+/*
+    adapter.setObject('connected', {
+        type: 'state',
+        common: {
+            name: 'connected',
+            type: 'boolean',
+            role: 'indicator'
+        },
+        native: {}
+    });
+    */
 }
