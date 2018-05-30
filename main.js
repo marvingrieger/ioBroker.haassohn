@@ -45,7 +45,8 @@ var adapter = new utils.Adapter('pallazza');
 var request = require('request');
 
 // Variables
-let deviceStates    = new Array();
+let deviceStates = new Array();
+let noOfConnectionErrors = 0;
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
@@ -100,6 +101,7 @@ function initialize() {
     // Start polling
     pollDeviceStatus();
 
+
     /**
      *   setState examples
      *
@@ -131,20 +133,14 @@ function initialize() {
     */
 }
 
-function updateStates()
-{
-    adapter.log.info("Starting to update states");
 
-    adapter.log.info("Finished updating states");
-}
-
-function pollDeviceStatus(noOfRetries)
+function pollDeviceStatus()
 {
     adapter.log.debug("Polling device");
 
     // Check if there were retries
-    if (noOfRetries > 0)
-        adapter.log.error("There was an error getting the device status (counter: " + noOfRetries + ")");
+    if (noOfConnectionErrors > 0)
+        adapter.log.error("There was an error getting the device status (counter: " + noOfConnectionErrors + ")");
 
     let link = "http://" + adapter.config.fireplaceAddress + "/status.cgi";
 
@@ -160,23 +156,51 @@ function pollDeviceStatus(noOfRetries)
                 // Evaluate result
                 result = JSON.parse(body);
 
+                // Reset error counter
+                noOfConnectionErrors = 0;
+
                 // Sync states
                 syncState(result, "");
 
-                // Poll
-                setTimeout(function(){pollDeviceStatus(0)}, adapter.config.pollingInterval * 1000);
+
             }
             catch (e)
             {
                 // Parser error
                 adapter.log.error('Error parsing the response: ' + e);
-                setTimeout(function(){pollDeviceStatus(noOfRetries + 1)}, adapter.config.pollingInterval * 1000);
+
+                // Increment error counter
+                noOfConnectionErrors++;
             }
         }
         else {
             // Connection error
             adapter.log.error('Error retrieving status: ' + error);
-            setTimeout(function(){pollDeviceStatus(noOfRetries + 1)}, adapter.config.pollingInterval * 1000);
+
+            // Increment error counter
+            noOfConnectionErrors++;
+        }
+
+        // Update connection status
+        updateConnectionStatus();
+
+        // Poll again
+        setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
+    });
+}
+
+function updateConnectionStatus()
+{
+    // Query current state to check whether something chaged at all
+    adapter.getState("connected", function (err, state)
+    {
+        let connectionSuccessfull =  noOfConnectionErrors == 0 ? true : false;
+
+        // Check whether the state has changed. If so, change state
+        if (state == null || state.val != connectionSuccessfull)
+        {
+            // Update state
+            adapter.setState("connected", connectionSuccessfull, true);
         }
     });
 }
@@ -204,15 +228,18 @@ function syncState(state, path)
                 let stateName = path == "" ? 'device.' + key  : 'device.' + path + "." + key;
                 let value = state[key];
 
+                // Store retrieved state in central data structure
                 let newState = [];
                 newState['value'] = value;
                 deviceStates[stateName] = newState;
 
-                adapter.getState(stateName, function (err, state) {
+                // Query current state to check whether something chaged at all
+                adapter.getState(stateName, function (err, state)
+                {
                     let newState = deviceStates[stateName];
                     deviceStates[stateName] = null;
 
-                    // Check whtether the state has changed. If so, change state
+                    // Check whether the state has changed. If so, change state
                     if (state == null || state.val != newState['value'])
                     {
                         if (state != null)

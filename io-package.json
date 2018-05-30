@@ -61,7 +61,8 @@
     },
     "native": {
         "fireplaceAddress": "127.0.0.1:4200",
-        "pollingInterval": "10"
+        "pollingInterval": "10",
+        "pin": "0000"
     },
     "instanceObjects": [
         {
@@ -82,7 +83,7 @@
           "native": {}
         },
         {
-          "_id": "connection",
+          "_id": "connected",
           "type": "state",
           "common": {
             "role": "indicator.connected",
