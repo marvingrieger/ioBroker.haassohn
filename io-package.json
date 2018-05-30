@@ -56,11 +56,12 @@
         "readme": "https://github.com/grieger/ioBroker.pallazza/blob/master/README.md",
         "loglevel": "info",
         "type": "general",
-        "restartAdapters": ["vis"]
+        "restartAdapters": ["vis"],
+        "license": "MIT"
     },
     "native": {
         "fireplaceAddress": "127.0.0.1:4200",
-        "pollingInterval": "5"
+        "pollingInterval": "10"
     },
     "instanceObjects": [
         {

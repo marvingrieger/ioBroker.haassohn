@@ -41,6 +41,12 @@ var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.pallazza.0
 var adapter = new utils.Adapter('pallazza');
 
+// Dependencies
+var request = require('request');
+
+// Variables
+let deviceStates    = new Array();
+
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
     try {
@@ -88,16 +94,11 @@ adapter.on('ready', function () {
 });
 
 function initialize() {
-    // The adapters config (in the instance object everything under the attribute "native") is accessible via
-    // adapter.config:
-    adapter.log.debug('config fireplaceAddress: '    + adapter.config.fireplaceAddress);
-    adapter.log.debug('config pollingInterval: '    + adapter.config.pollingInterval);
-
-    // Instantiate the device
-    createDevice();
-
-    // in this pallazza all states changes inside the adapters namespace are subscribed
+    // All states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
+
+    // Start polling
+    pollDeviceStatus();
 
     /**
      *   setState examples
@@ -130,26 +131,105 @@ function initialize() {
     */
 }
 
-function createDevice()
+function updateStates()
 {
-    /**
-     *
-     *      For every state in the system there has to be also an object of type state
-     *
-     *      Here a simple pallazza for a boolean variable named "testVariable"
-     *
-     *      Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-     *
-     */
-/*
-    adapter.setObject('connected', {
-        type: 'state',
-        common: {
-            name: 'connected',
-            type: 'boolean',
-            role: 'indicator'
-        },
-        native: {}
+    adapter.log.info("Starting to update states");
+
+    adapter.log.info("Finished updating states");
+}
+
+function pollDeviceStatus(noOfRetries)
+{
+    adapter.log.debug("Polling device");
+
+    // Check if there were retries
+    if (noOfRetries > 0)
+        adapter.log.error("There was an error getting the device status (counter: " + noOfRetries + ")");
+
+    let link = "http://" + adapter.config.fireplaceAddress + "/status.cgi";
+
+    // Poll device state
+    request(link, function (error, response, body)
+    {
+        if (!error && response.statusCode == 200)
+        {
+            var result;
+
+            try
+            {
+                // Evaluate result
+                result = JSON.parse(body);
+
+                // Sync states
+                syncState(result, "");
+
+                // Poll
+                setTimeout(function(){pollDeviceStatus(0)}, adapter.config.pollingInterval * 1000);
+            }
+            catch (e)
+            {
+                // Parser error
+                adapter.log.error('Error parsing the response: ' + e);
+                setTimeout(function(){pollDeviceStatus(noOfRetries + 1)}, adapter.config.pollingInterval * 1000);
+            }
+        }
+        else {
+            // Connection error
+            adapter.log.error('Error retrieving status: ' + error);
+            setTimeout(function(){pollDeviceStatus(noOfRetries + 1)}, adapter.config.pollingInterval * 1000);
+        }
     });
-    */
+}
+
+// Synchronize the retrieved states with the states of the adapter
+function syncState(state, path)
+{
+    adapter.log.debug("Syncing state (" + state + ") with path (" + path + ") - " + Array.isArray(state));
+
+    try
+    {
+        // Iterate all elements
+        Object.keys(state).forEach(function(key)
+        {
+            // If value is an object: recurse
+            if (typeof state[key] == "object" && !Array.isArray(state[key]))
+            {
+                let newPath = path == "" ? key  : path + "." + key;
+                syncState(state[key], newPath);
+            }
+            // If value is atomic: process state
+            else
+            {
+                // Calculate stateName
+                let stateName = path == "" ? 'device.' + key  : 'device.' + path + "." + key;
+                let value = state[key];
+
+                let newState = [];
+                newState['value'] = value;
+                deviceStates[stateName] = newState;
+
+                adapter.getState(stateName, function (err, state) {
+                    let newState = deviceStates[stateName];
+                    deviceStates[stateName] = null;
+
+                    // Check whtether the state has changed. If so, change state
+                    if (state == null || state.val != newState['value'])
+                    {
+                        if (state != null)
+                            adapter.log.info("Detected new state for " + stateName + ": " + newState['value'] + " (was: " + state.val + ")")
+                        else
+                            adapter.log.info("Detected new state for " + stateName + ": " + newState['value'])
+
+                        // Update state
+                        adapter.setState(stateName, newState['value'], true);
+                    }
+
+                });
+            }
+        })
+    }
+    catch (e)
+    {
+        adapter.log.error("Error syncing states: " + e);
+    }
 }
