@@ -47,6 +47,10 @@ var request = require('request');
 // Variables
 let deviceStates = new Array();
 let noOfConnectionErrors = 0;
+let missingState = false;
+let timer;
+let stopAdapter = false;
+
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
@@ -58,11 +62,13 @@ adapter.on('unload', function (callback) {
     }
 });
 
+
 // is called if a subscribed object changes
 adapter.on('objectChange', function (id, obj) {
     // Warning, obj can be null if it was deleted
     adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
+
 
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
@@ -74,6 +80,7 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
     }
 });
+
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
 adapter.on('message', function (obj) {
@@ -88,60 +95,34 @@ adapter.on('message', function (obj) {
     }
 });
 
+
 // is called when databases are connected and adapter received configuration.
 // start here!
-adapter.on('ready', function () {
+adapter.on('ready', function ()
+{
     initialize();
 });
 
-function initialize() {
+
+function initialize()
+{
     // All states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
 
     // Start polling
     pollDeviceStatus();
-
-
-    /**
-     *   setState examples
-     *
-     *   you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-     *
-     */
-
-    /*
-    // the variable testVariable is set to true as command (ack=false)
-    adapter.setState('testVariable', true);
-
-    // same thing, but the value is flagged "ack"
-    // ack should be always set to true if the value is received from or acknowledged from the target system
-    adapter.setState('testVariable', {val: true, ack: true});
-
-    // same thing, but the state is deleted after 30s (getState will return null afterwards)
-    adapter.setState('testVariable', {val: true, ack: true, expire: 30});
-
-
-
-    // examples for the checkPassword/checkGroup functions
-    adapter.checkPassword('admin', 'iobroker', function (res) {
-        console.log('check user admin pw ioboker: ' + res);
-    });
-
-    adapter.checkGroup('admin', 'admin', function (res) {
-        console.log('check group user admin group admin: ' + res);
-    });
-    */
 }
 
 
+// Main function to poll the device status
 function pollDeviceStatus()
 {
     adapter.log.debug("Polling device");
 
-    // Check if there were retries
-    if (noOfConnectionErrors > 0)
-        adapter.log.error("There was an error getting the device status (counter: " + noOfConnectionErrors + ")");
+    // Clear timer
+    clearTimeout(timer);
 
+    // Calculate device link
     let link = "http://" + adapter.config.fireplaceAddress + "/status.cgi";
 
     // Poll device state
@@ -161,8 +142,6 @@ function pollDeviceStatus()
 
                 // Sync states
                 syncState(result, "");
-
-
             }
             catch (e)
             {
@@ -185,14 +164,20 @@ function pollDeviceStatus()
         updateConnectionStatus();
 
         // Poll again
-        setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
+        timer = setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
     });
 }
 
+
+// Indicate the state of the connection by setting the state 'connected'
 function updateConnectionStatus()
 {
+    // Check if there were retries
+    if (noOfConnectionErrors > 0)
+        adapter.log.error("There was an error getting the device status (counter: " + noOfConnectionErrors + ")");
+
     // Query current state to check whether something chaged at all
-    adapter.getState("connected", function (err, state)
+    adapter.getObject("connected", function (err, state)
     {
         let connectionSuccessfull =  noOfConnectionErrors == 0 ? true : false;
 
@@ -203,7 +188,20 @@ function updateConnectionStatus()
             adapter.setState("connected", connectionSuccessfull, true);
         }
     });
+
+    // Query current state to check whether something chaged at all
+    adapter.getObject("missing_state", function (err, state)
+    {
+        // Check whether the state has changed. If so, change state
+        if (state == null || state.val != missingState)
+        {
+            // Update state
+            adapter.setState("missing_state", missingState, true);
+        }
+    });
+
 }
+
 
 // Synchronize the retrieved states with the states of the adapter
 function syncState(state, path)
@@ -233,24 +231,60 @@ function syncState(state, path)
                 newState['value'] = value;
                 deviceStates[stateName] = newState;
 
-                // Query current state to check whether something chaged at all
-                adapter.getState(stateName, function (err, state)
+                // Query current object to check whether the data definition is correct
+                adapter.getObject(stateName, function (err, object)
                 {
-                    let newState = deviceStates[stateName];
-                    deviceStates[stateName] = null;
-
-                    // Check whether the state has changed. If so, change state
-                    if (state == null || state.val != newState['value'])
+                    if (err)
                     {
-                        if (state != null)
-                            adapter.log.info("Detected new state for " + stateName + ": " + newState['value'] + " (was: " + state.val + ")")
-                        else
-                            adapter.log.info("Detected new state for " + stateName + ": " + newState['value'])
-
-                        // Update state
-                        adapter.setState(stateName, newState['value'], true);
+                        // Dump error and stop adapter
+                        adapter.log.error(err);
+                        stopAdapter = true;
                     }
 
+
+                    // Check that object exists
+                    if (object != null)
+                    {
+                        // Query current state to check whether something changed at all
+                        adapter.getState(stateName, function (err, state)
+                        {
+                            if (err) {
+                                // Dump error and stop adapter
+                                adapter.log.error(err);
+                                stopAdapter = true;
+                            }
+
+                            let newState = deviceStates[stateName];
+                            deviceStates[stateName] = null;
+
+                            if (state != null)
+                            {
+                                // Check whether the state has changed. If so, change state
+                                if (state.val != newState['value']) {
+                                    adapter.log.info("Detected new state for " + stateName + ": " + newState['value'] + " (was: " + state.val + ")");
+
+                                    // Update state
+                                    adapter.setState(stateName, newState['value'], true);
+                                }
+
+                            }
+                            else
+                            {
+                                adapter.log.info("Detected new state for " + stateName + ": " + newState['value']);
+
+                                // Update state
+                                adapter.setState(stateName, newState['value'], true);
+                            }
+                        });
+                    }
+                    // Object does not exist, implicates error in data model
+                    else
+                    {
+                        adapter.log.warn("State " + stateName + " does not exist null.");
+
+                        // Indicate that state is missing
+                        missingState = true;
+                    }
                 });
             }
         })

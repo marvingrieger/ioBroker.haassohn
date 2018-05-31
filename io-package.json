@@ -87,7 +87,17 @@
           "type": "state",
           "common": {
             "role": "indicator.connected",
-            "name": "If connected to device",
+            "name": "Connection to device successful?",
+            "type": "boolean",
+            "read": true
+          },
+          "native": {}
+        },
+        {
+          "_id": "missing_state",
+          "type": "state",
+          "common": {
+            "name": "Is a state missing?",
             "type": "boolean",
             "read": true
           },
@@ -131,6 +141,17 @@
           "type": "state",
           "common": {
             "name": "Wifi firmware version",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.wifi_bootl_version",
+          "type": "state",
+          "common": {
+            "name": "Wifi bootloader version",
             "type": "string",
             "read": true,
             "write": false
