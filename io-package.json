@@ -196,10 +196,10 @@
             "_id": "device.prg",
             "type": "state",
             "common": {
-              "name": "Program active",
+              "name": "Is the oven active?",
               "type": "boolean",
               "read": true,
-              "write": false
+              "write": true
             },
             "native": {}
         },
@@ -207,7 +207,7 @@
           "_id": "device.wprg",
           "type": "state",
           "common": {
-            "name": "Weerkprogram actice",
+            "name": "Is the weekprogram active?",
             "type": "boolean",
             "read": true,
             "write": false
