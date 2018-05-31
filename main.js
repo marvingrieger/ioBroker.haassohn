@@ -265,12 +265,21 @@ function syncState(state, path)
 
                             if (state != null)
                             {
+                                let newValue;
+
+                                // Normalize new value
+                                if (typeof newState['value'] == "object")
+                                    newValue = JSON.stringify(newState['value']);
+                                else
+                                    newValue = newState['value'];
+
                                 // Check whether the state has changed. If so, change state
-                                if (state.val != newState['value']) {
-                                    adapter.log.info("Detected new state for " + stateName + ": " + newState['value'] + " (was: " + state.val + ")");
+                                if (state.val != newValue)
+                                {
+                                    adapter.log.info("Detected new state for " + stateName + ": " + newValue + " (was: " + state.val + ")");
 
                                     // Update state
-                                    adapter.setState(stateName, newState['value'], true);
+                                    adapter.setState(stateName, newValue, true);
                                 }
 
                             }
@@ -279,7 +288,10 @@ function syncState(state, path)
                                 adapter.log.info("Detected new state for " + stateName + ": " + newState['value']);
 
                                 // Update state
-                                adapter.setState(stateName, newState['value'], true);
+                                if (typeof newState['value'] == "object")
+                                    adapter.setState(stateName, JSON.stringify(newState['value']), true);
+                                else
+                                    adapter.setState(stateName, newState['value'], true);
                             }
                         });
                     }
