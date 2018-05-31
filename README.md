@@ -1,6 +1,6 @@
 # ioBroker.pallazza
 
-This adapter enables to control a HSP 6 PALLAZZA-III 534.08 device in ioBroker.
+This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device in ioBroker.
 
 ## Changelog
 
