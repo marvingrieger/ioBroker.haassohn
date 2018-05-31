@@ -174,10 +174,12 @@ function updateConnectionStatus()
 {
     // Check if there were retries
     if (noOfConnectionErrors > 0)
+    {
         adapter.log.error("There was an error getting the device status (counter: " + noOfConnectionErrors + ")");
+    }
 
     // Query current state to check whether something chaged at all
-    adapter.getObject("connected", function (err, state)
+    adapter.getState("connected", function (err, state)
     {
         let connectionSuccessfull =  noOfConnectionErrors == 0 ? true : false;
 
@@ -190,7 +192,7 @@ function updateConnectionStatus()
     });
 
     // Query current state to check whether something chaged at all
-    adapter.getObject("missing_state", function (err, state)
+    adapter.getState("missing_state", function (err, state)
     {
         // Check whether the state has changed. If so, change state
         if (state == null || state.val != missingState)
@@ -200,6 +202,11 @@ function updateConnectionStatus()
         }
     });
 
+    // Shall we stop the adapter?
+    if (stopAdapter)
+    {
+        adapter.log.error("Adapter shall be stopped ...");
+    }
 }
 
 
@@ -240,7 +247,6 @@ function syncState(state, path)
                         adapter.log.error(err);
                         stopAdapter = true;
                     }
-
 
                     // Check that object exists
                     if (object != null)
@@ -291,6 +297,8 @@ function syncState(state, path)
     }
     catch (e)
     {
+        // Dump error and stop adapter
         adapter.log.error("Error syncing states: " + e);
+        stopAdapter = true;
     }
 }
