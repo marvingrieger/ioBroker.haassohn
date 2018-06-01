@@ -44,8 +44,13 @@ var adapter = new utils.Adapter('pallazza');
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
-    try {
+    try
+    {
         adapter.log.info('cleaned everything up...');
+
+        // Clear timer
+        clearTimeout(timer);
+
         callback();
     } catch (e) {
         callback();
@@ -76,13 +81,30 @@ adapter.on('objectChange', function (id, obj) {
 
 
 // is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {
+adapter.on('stateChange', function (id, state)
+{
     // Warning, state can be null if it was deleted
-    adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
+    adapter.log.warn('stateChange ' + id + ' ' + JSON.stringify(state));
 
     // you can use the ack flag to detect if it is status (true) or command (false)
-    if (state && !state.ack) {
-        adapter.log.debug('ack is not set!');
+    if (state && !state.ack)
+    {
+        adapter.log.debug('stateChange (command): ' + id + ' ' + JSON.stringify(state));
+
+        if (String(id) === (adapter.namespace + ".device.prg"))
+        {
+            // TODO: Implement prg command to device
+            adapter.log.error('Processing command prg -> not implemented yet');
+
+            adapter.setState(id, state, true);
+        }
+        else if (String(id) === (adapter.namespace + ".device.sp_temp"))
+        {
+            // TODO: Implement sp_temp command to device
+            adapter.log.error('Processing command sp_temp -> not implemented yet');
+
+            adapter.setState(id, state, true);
+        }
     }
 });
 
