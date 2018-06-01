@@ -25,6 +25,7 @@
     "url": "https://github.com/ioBroker/ioBroker.pallazza"
   },
   "dependencies": {
+    "md5": "^2.2.1",
     "request": "^2.87.0"
   },
   "devDependencies": {

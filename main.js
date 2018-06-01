@@ -35,13 +35,12 @@
 
 // you have to require the utils module and call adapter function
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
+var md5 = require('md5');
 
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.pallazza.0
 var adapter = new utils.Adapter('pallazza');
-
-
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
@@ -52,17 +51,21 @@ adapter.on('unload', function (callback) {
         callback();
     }
 });
+
 // Dependencies
 var request = require('request');
 
 // Variables
-let deviceStates = new Array();
-let noOfConnectionErrors = 0;
-let missingState = false;
-let timer;
-let disableAdapter = false;
-let hw_version;
-let sw_version;
+let deviceStates = new Array();     // Used to internally buffer the retrieved states before writing them to the adapter
+let noOfConnectionErrors = 0;       // Counter for connection problems
+let missingState = false;           // If a device state cannot be maped to an internal state of the adapter, this variable gets set
+let timer;                          // Settimeout-Pointer to the poll-function
+let disableAdapter = false;         // If an error occurs, this variable is set to true which disables the adapter
+let hw_version;                     // Hardware version retrieved from the device
+let sw_version;                     // Software version retrieved from the device
+let hpin;                           // HPIN is the 'encrypted' PIN of the device
+let hspin;                          // HSPIN is the secret, depending on the current NONCE and the HPIN
+let nonce;                          // The current NONCE of the device
 
 
 // is called if a subscribed object changes
@@ -110,6 +113,9 @@ function initialize()
 {
     // All states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
+
+    // Calculate HPIN
+    hpin = calculateHPIN(adapter.config.pin);
 
     // Start polling
     pollDeviceStatus();
@@ -300,10 +306,18 @@ function syncState(state, path)
                                 else
                                     newValue = newState['value'];
 
-                                if (stateName === "device.meta.hw_version")
+                                // Buffer HW-Version for supported version check
+                                if (stateName === "device.meta.hw_version" && hw_version !== newValue)
                                     hw_version = newValue;
-                                else if (stateName === "device.meta.sw_version")
+                                // Buffer SW-Version for supported version check
+                                else if (stateName === "device.meta.sw_version" && sw_version !== newValue)
                                     sw_version = newValue;
+                                // Buffer nonce to calculate HSPIN
+                                else if (stateName === "device.meta.nonce" && nonce !== newValue)
+                                {
+                                    nonce = newValue;
+                                    hspin = calculateHSPIN(nonce, hpin);
+                                }
 
                                 // Check whether the state has changed. If so, change state
                                 if (state.val != newValue)
@@ -346,4 +360,26 @@ function syncState(state, path)
         adapter.log.error("Error syncing states: " + e);
         disableAdapter = true;
     }
+}
+
+
+// Given the HPIN and the current NONCE, the HSPIN is calculated
+// HSPIN = MD5(NONCE + HPIN)
+function calculateHSPIN(NONCE, HPIN)
+{
+    let result = md5(NONCE + HPIN);
+    adapter.log.debug('HSPIN: ' + HPIN);
+
+    return result;
+}
+
+
+// The PIN of the device is used to calculate the HPIN
+// HPIN = MD5(PIN)
+function calculateHPIN(PIN)
+{
+    let result = md5(PIN);
+    adapter.log.debug('HPIN: ' + result);
+
+    return result;
 }
