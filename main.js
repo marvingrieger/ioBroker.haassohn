@@ -68,18 +68,18 @@ let sw_version;
 // is called if a subscribed object changes
 adapter.on('objectChange', function (id, obj) {
     // Warning, obj can be null if it was deleted
-    adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
+    adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
 
 
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
     // Warning, state can be null if it was deleted
-    adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
+    adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
-        adapter.log.info('ack is not set!');
+        adapter.log.debug('ack is not set!');
     }
 });
 
@@ -211,11 +211,11 @@ function updateConnectionStatus()
         {
             if (!JSON.parse(adapter.config.supportedHwSwVersions)[hw_version + "_" + sw_version])
             {
-                adapter.log.error("Hardware / Software version is not supported by this adapter!");
+                adapter.log.error("Hardware / Software version (" + hw_version + "_" + sw_version + ")is not supported by this adapter!");
                 disableAdapter = true;
             }
             else
-                adapter.log.error("Hardware / Software version is supported by this adapter!");
+                adapter.log.debug("Hardware / Software version is supported by this adapter!");
 
         }
         catch (err)

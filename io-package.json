@@ -1,50 +1,32 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "news": {
-            "0.0.1": {
-                "en": "initial version",
-                "de": "Initiale Version",
-                "ru": "Первоначальный адаптер",
-                "pt": "Versão inicial",
-                "fr": "Version initiale",
-                "nl": "Eerste release"
-            }
+          "0.1.0": {
+            "en": "First functional version",
+            "de": "Erste funktionale Version"
+          },
+          "0.0.1": {
+              "en": "initial version",
+              "de": "Initiale Version"
+          }
         },
 		"title": "HSP 6 PALLAZZA-III 534.08 adapter",
         "titleLang": {
             "en": "HSP 6 PALLAZZA-III 534.08 adapter",
-            "de": "HSP 6 PALLAZZA-III 534.08 Adapter",
-            "ru": "Адаптер шаблонов на основе Javascript / Node.js",
-            "pt": "Adaptador de modelo baseado em Javascript / Node.js",
-            "nl": "Javascript / Node.js gebaseerde sjabloonadapter",
-            "fr": "Javascript / Node.js basé adaptateur de modèle",
-            "it": "Adattatore modello basato su Javascript / Node.js",
-            "es": "Adaptador de plantilla basado en JavaScript / Node.js"
+            "de": "HSP 6 PALLAZZA-III 534.08 Adapter"
         },
         "desc": {
             "en": "Enables controlling a HSP 6 PALLAZZA-III 534.08 adapter",
-            "de": "Ermöglicht die Steuerung eines HSP 6 PALLAZZA-III 534.08 adapter",
-            "ru": "ioBroker Pallazza драйвер как образец",
-            "pt": "Modelo de adaptador para o ioBroker",
-            "fr": "ioBroker adaptateur modèle",
-            "nl": "ioBroker Pallazza Adapter",
-            "it": "Adattatore modello ioBroker",
-            "es": "Adaptador de plantilla ioBroker"
+            "de": "Ermöglicht die Steuerung eines HSP 6 PALLAZZA-III 534.08 adapter"
         },
         "authors": [
             "Marvin Grieger <mail@marvingrieger.de>"
         ],
         "docs": {
             "en": "docs/en/admin.md",
-            "ru": "docs/ru/admin.md",
-            "de": "docs/de/admin.md",
-            "es": "docs/es/admin.md",
-            "it": "docs/it/admin.md",
-            "fr": "docs/fr/admin.md",
-            "nl": "docs/nl/admin.md",
-            "pt": "docs/pt/admin.md"
+            "de": "docs/de/admin.md"
         },
         "platform": "Javascript/Node.js",
         "mode": "once",
