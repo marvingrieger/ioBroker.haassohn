@@ -41,15 +41,6 @@ var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.pallazza.0
 var adapter = new utils.Adapter('pallazza');
 
-// Dependencies
-var request = require('request');
-
-// Variables
-let deviceStates = new Array();
-let noOfConnectionErrors = 0;
-let missingState = false;
-let timer;
-let stopAdapter = false;
 
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
@@ -61,6 +52,17 @@ adapter.on('unload', function (callback) {
         callback();
     }
 });
+// Dependencies
+var request = require('request');
+
+// Variables
+let deviceStates = new Array();
+let noOfConnectionErrors = 0;
+let missingState = false;
+let timer;
+let disableAdapter = false;
+let hw_version;
+let sw_version;
 
 
 // is called if a subscribed object changes
@@ -202,10 +204,34 @@ function updateConnectionStatus()
         }
     });
 
-    // Shall we stop the adapter?
-    if (stopAdapter)
+    // Check if hardware / software combination is supported
+    if (hw_version != null && sw_version != null)
     {
-        adapter.log.error("Adapter shall be stopped ...");
+        try
+        {
+            if (!JSON.parse(adapter.config.supportedHwSwVersions)[hw_version + "_" + sw_version])
+            {
+                adapter.log.error("Hardware / Software version is not supported by this adapter!");
+                disableAdapter = true;
+            }
+            else
+                adapter.log.error("Hardware / Software version is supported by this adapter!");
+
+        }
+        catch (err)
+        {
+            // Dump error and stop adapter
+            adapter.log.error(err);
+            disableAdapter = true;
+        }
+    }
+
+    // Shall we disable the adapter?
+    if (disableAdapter)
+    {
+        adapter.log.error("Some error occurred ... disabling the adapter");
+
+        throw ("Some error occurred (see log). Adapter disabled");
     }
 }
 
@@ -245,7 +271,7 @@ function syncState(state, path)
                     {
                         // Dump error and stop adapter
                         adapter.log.error(err);
-                        stopAdapter = true;
+                        disableAdapter = true;
                     }
 
                     // Check that object exists
@@ -257,12 +283,13 @@ function syncState(state, path)
                             if (err) {
                                 // Dump error and stop adapter
                                 adapter.log.error(err);
-                                stopAdapter = true;
+                                disableAdapter = true;
                             }
 
                             let newState = deviceStates[stateName];
                             deviceStates[stateName] = null;
 
+                            // State updates?
                             if (state != null)
                             {
                                 let newValue;
@@ -273,19 +300,25 @@ function syncState(state, path)
                                 else
                                     newValue = newState['value'];
 
+                                if (stateName === "device.meta.hw_version")
+                                    hw_version = newValue;
+                                else if (stateName === "device.meta.sw_version")
+                                    sw_version = newValue;
+
                                 // Check whether the state has changed. If so, change state
                                 if (state.val != newValue)
                                 {
-                                    adapter.log.info("Detected new state for " + stateName + ": " + newValue + " (was: " + state.val + ")");
+                                    adapter.log.debug("Detected new state for " + stateName + ": " + newValue + " (was: " + state.val + ")");
 
                                     // Update state
                                     adapter.setState(stateName, newValue, true);
                                 }
 
                             }
+                            // Initial setting of states
                             else
                             {
-                                adapter.log.info("Detected new state for " + stateName + ": " + newState['value']);
+                                adapter.log.debug("Detected new state for " + stateName + ": " + newState['value']);
 
                                 // Update state
                                 if (typeof newState['value'] == "object")
@@ -311,6 +344,6 @@ function syncState(state, path)
     {
         // Dump error and stop adapter
         adapter.log.error("Error syncing states: " + e);
-        stopAdapter = true;
+        disableAdapter = true;
     }
 }
