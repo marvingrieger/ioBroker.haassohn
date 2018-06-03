@@ -1,4 +1,8 @@
 # ioBroker.pallazza
+
+[![Tests](https://travis-ci.org/marvingrieger/ioBroker.pallazza.svg?branch=master)](https://travis-ci.org/marvingrieger/ioBroker.pallazza)
+
+
 This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device in ioBroker.
 
 ## Features
