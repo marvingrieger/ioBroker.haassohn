@@ -6,10 +6,14 @@ This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device i
 * The polling interval, the IP address of the device as well as the device PIN can be configured
 * The adapter contains a predefined data model of the states of the device (defined in *io-package.json*). If the adapter senses that the data model is missing some states, the state of the adapter *missing_states* is set to true. This situation might occur, as the data model is not fully known (since the source code of the device is not available). The predefined data model was learned by observing the device
 * The adapter gets disabled, if an error occurs (i.e., if the hardware / software version is not supported). In this case, the adapter is shut down internally (no further polling of the device). This is implied by the state *terminated* which then changes to *true*.
+* The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.0
+* The device can now be controlled. Currently, turning the device on and off (*prg) and setting the desired temperature (*sp_temp*) is supported.
+
 ### 0.1.0
-* First functional release. States of the device are read and represented in ioBroker. However, the device cannot be controled yet (e.g., setting the temperature)
+* First functional release. States of the device are read and represented in ioBroker. However, the device cannot be controled yet (e.g., setting the temperature).
 
 ### 0.0.1
 * Initial release. The adapter is not functional yet.

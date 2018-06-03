@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "news": {
+          "0.2.0": {
+            "en": "It is now possible to control the oven",
+            "de": "Steuerung des Ofens möglich"
+          },
           "0.1.0": {
             "en": "First functional version",
             "de": "Erste funktionale Version"

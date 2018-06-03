@@ -1,34 +1,3 @@
-/**
- *
- * pallazza adapter
- *
- *
- *  file io-package.json comments:
- *
- *  {
- *      "common": {
- *          "name":         "pallazza",                  // name has to be set and has to be equal to adapters folder name and main file name excluding extension
- *          "version":      "0.0.0",                    // use "Semantic Versioning"! see http://semver.org/
- *          "title":        "Node.js pallazza Adapter",  // Adapter title shown in User Interfaces
- *          "authors":  [                               // Array of authord
- *              "name <mail@pallazza.com>"
- *          ]
- *          "desc":         "pallazza adapter",          // Adapter description shown in User Interfaces. Can be a language object {de:"...",ru:"..."} or a string
- *          "platform":     "Javascript/Node.js",       // possible values "javascript", "javascript/Node.js" - more coming
- *          "mode":         "daemon",                   // possible values "daemon", "schedule", "subscribe"
- *          "materialize":  true,                       // support of admin3
- *          "schedule":     "0 0 * * *"                 // cron-style schedule. Only needed if mode=schedule
- *          "loglevel":     "info"                      // Adapters Log Level
- *      },
- *      "native": {                                     // the native object is available via adapter.config in your adapters code - use it for configuration
- *          "test1": true,
- *          "test2": 42,
- *          "mySelect": "auto"
- *      }
- *  }
- *
- */
-
 /* jshint -W097 */// jshint strict:false
 /*jslint node: true */
 'use strict';
@@ -36,6 +5,7 @@
 // you have to require the utils module and call adapter function
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 var md5 = require('md5');
+var request = require('request');
 
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
@@ -97,26 +67,64 @@ adapter.on('stateChange', function (id, state)
 
         if (String(id) === (adapter.namespace + ".device.prg"))
         {
-            // TODO: Implement prg command to device
-            adapter.log.error('Processing command prg -> not implemented yet');
+            // Set new program
+            var post_data = '{"prg":' + state.val + '}';
 
-            adapter.setState(id, state, true);
+            // Perform request
+            var request = require('request');
+            request.post({
+                headers: createHeader(post_data),
+                url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
+                body:    post_data
+            }, function(error, response, body)
+            {
+                // POST was successful, perform ack
+                if (error === null)
+                {
+                    adapter.setState(adapter.namespace + ".device.prg", state.val, true);
+                }
+                // POST was not successful, revert
+                else
+                {
+                    adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                }
+            });
         }
         else if (String(id) === (adapter.namespace + ".device.sp_temp"))
         {
-            // TODO: Implement sp_temp command to device
-            adapter.log.error('Processing command sp_temp -> not implemented yet');
+            // Set new program
+            var post_data = '{"sp_temp":' + state.val + '}';
 
-            adapter.setState(id, state, true);
+            // Perform request
+            var request = require('request');
+            request.post({
+                headers: createHeader(post_data),
+                url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
+                body:    post_data
+            }, function(error, response, body)
+            {
+                // POST was successful, perform ack
+                if (error === null)
+                {
+                    adapter.setState(adapter.namespace + ".device.sp_temp", state.val, true);
+                }
+                // POST was not successful, revert
+                else
+                {
+                    adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                }
+            });
         }
     }
 });
 
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
-adapter.on('message', function (obj) {
+adapter.on('message', function (obj)
+{
     if (typeof obj === 'object' && obj.message) {
-        if (obj.command === 'send') {
+        if (obj.command === 'send')
+        {
             // e.g. send email or pushover or whatever
             console.log('send command');
 
@@ -420,4 +428,26 @@ function calculateHPIN(PIN)
     adapter.log.debug('HPIN: ' + result);
 
     return result;
+}
+
+
+// Provides a header for a POST request
+function createHeader(post_data)
+{
+    let header = {
+        'Host':	adapter.config.fireplaceAddress,
+        'Accept':	'*/*',
+        'Proxy-Connection':	'keep-alive',
+        'X-BACKEND-IP':	'https://app.haassohn.com',
+        'Accept-Language': 'de-DE;q=1.0, en-DE;q=0.9',
+        'Accept-Encoding': 'gzip;q=1.0, compress;q=0.5',
+        'token': '32bytes',
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(post_data),
+        'User-Agent': 'ios',
+        'Connection':	'keep-alive',
+        'X-HS-PIN': hspin,
+    }
+
+    return header;
 }
