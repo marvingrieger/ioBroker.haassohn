@@ -14,7 +14,7 @@ This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device i
 
 ## Changelog
 ### 0.2.0
-* The device can now be controlled. Currently, turning the device on and off (*prg) and setting the desired temperature (*sp_temp*) is supported.
+* The device can now be controlled. Currently, turning the device on and off (*prg*) and setting the desired temperature (*sp_temp*) is supported.
 
 ### 0.1.0
 * First functional release. States of the device are read and represented in ioBroker. However, the device cannot be controled yet (e.g., setting the temperature).
