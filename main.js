@@ -43,16 +43,19 @@ var md5 = require('md5');
 var adapter = new utils.Adapter('pallazza');
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', function (callback) {
+adapter.on('unload', function (callback)
+{
     try
     {
-        adapter.log.info('cleaned everything up...');
+        adapter.log.info('Adapter is shutting down. Cleaning everything up');
 
         // Clear timer
         clearTimeout(timer);
 
+        adapter.log.debug('Adapter was shut down. Cleaned everything up.');
         callback();
-    } catch (e) {
+    } catch (e)
+    {
         callback();
     }
 });
@@ -74,7 +77,8 @@ let nonce;                          // The current NONCE of the device
 
 
 // is called if a subscribed object changes
-adapter.on('objectChange', function (id, obj) {
+adapter.on('objectChange', function (id, obj)
+{
     // Warning, obj can be null if it was deleted
     adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
@@ -84,7 +88,7 @@ adapter.on('objectChange', function (id, obj) {
 adapter.on('stateChange', function (id, state)
 {
     // Warning, state can be null if it was deleted
-    adapter.log.warn('stateChange ' + id + ' ' + JSON.stringify(state));
+    adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack)
@@ -193,8 +197,9 @@ function pollDeviceStatus()
         // Update connection status
         updateConnectionStatus();
 
-        // Poll again
-        timer = setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
+        // Poll again, except a critical error occurred
+        if (!disableAdapter)
+            timer = setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
     });
 }
 
@@ -208,7 +213,7 @@ function updateConnectionStatus()
         adapter.log.error("There was an error getting the device status (counter: " + noOfConnectionErrors + ")");
     }
 
-    // Query current state to check whether something chaged at all
+    // Query current connection indicator to check whether something changed at all
     adapter.getState("connected", function (err, state)
     {
         let connectionSuccessfull =  noOfConnectionErrors == 0 ? true : false;
@@ -221,7 +226,7 @@ function updateConnectionStatus()
         }
     });
 
-    // Query current state to check whether something chaged at all
+    // Query current missing-state indicator to check whether something changed at all
     adapter.getState("missing_state", function (err, state)
     {
         // Check whether the state has changed. If so, change state
@@ -254,13 +259,24 @@ function updateConnectionStatus()
         }
     }
 
-    // Shall we disable the adapter?
-    if (disableAdapter)
+    // Query current state to check whether something changed at all
+    adapter.getState("terminated", function (err, state)
     {
-        adapter.log.error("Some error occurred ... disabling the adapter");
+        // Check whether the state has changed. If so, change state
+        if (state == null || state.val != disableAdapter)
+        {
+            // Update state
+            adapter.setState("terminated", disableAdapter, true);
+        }
 
-        throw ("Some error occurred (see log). Adapter disabled");
-    }
+        // Shall we disable the adapter?
+        if (disableAdapter)
+        {
+            adapter.log.error("Some critical error occurred (see log). Disabling the adapter");
+        }
+    });
+
+
 }
 
 

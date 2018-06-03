@@ -29,7 +29,7 @@
             "de": "docs/de/admin.md"
         },
         "platform": "Javascript/Node.js",
-        "mode": "once",
+        "mode": "daemon",
         "icon": "haassohn.png",
         "materialize": true,
         "enabled": true,
@@ -71,6 +71,16 @@
           "common": {
             "role": "indicator.connected",
             "name": "Connection to device successful?",
+            "type": "boolean",
+            "read": true
+          },
+          "native": {}
+        },
+        {
+          "_id": "terminated",
+          "type": "state",
+          "common": {
+            "name": "Is the adapter terminated due to a critical error?",
             "type": "boolean",
             "read": true
           },
