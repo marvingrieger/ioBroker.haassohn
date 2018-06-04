@@ -4,12 +4,12 @@
   "description": "ioBroker pallazza Adapter",
   "author": {
     "name": "Marvin Grieger",
-    "email": "mail@marvingrieger.de"
+    "email": "github@marvingrieger.de"
   },
   "contributors": [
     {
       "name": "Marvin Grieger",
-      "email": "mail@marvingrieger.de"
+      "email": "github@marvingrieger.de"
     }
   ],
   "homepage": "https://github.com/ioBroker/ioBroker.pallazza",

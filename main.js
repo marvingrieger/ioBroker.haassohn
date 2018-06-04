@@ -2,8 +2,8 @@
 /*jslint node: true */
 'use strict';
 
-// you have to require the utils module and call adapter function
-var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
+// Dependencies
+var utils =    require(__dirname + '/lib/utils'); // You have to require the utils module and call adapter function; Get common adapter utils
 var md5 = require('md5');
 var request = require('request');
 
@@ -30,20 +30,17 @@ adapter.on('unload', function (callback)
     }
 });
 
-// Dependencies
-var request = require('request');
-
 // Variables
-let deviceStates = new Array();     // Used to internally buffer the retrieved states before writing them to the adapter
-let noOfConnectionErrors = 0;       // Counter for connection problems
-let missingState = false;           // If a device state cannot be maped to an internal state of the adapter, this variable gets set
-let timer;                          // Settimeout-Pointer to the poll-function
-let disableAdapter = false;         // If an error occurs, this variable is set to true which disables the adapter
-let hw_version;                     // Hardware version retrieved from the device
-let sw_version;                     // Software version retrieved from the device
-let hpin;                           // HPIN is the 'encrypted' PIN of the device
-let hspin;                          // HSPIN is the secret, depending on the current NONCE and the HPIN
-let nonce;                          // The current NONCE of the device
+var deviceStates = [];     // Used to internally buffer the retrieved states before writing them to the adapter
+var noOfConnectionErrors = 0;       // Counter for connection problems
+var missingState = false;           // If a device state cannot be mapped to an internal state of the adapter, this variable gets set
+var timer;                          // Settimeout-Pointer to the poll-function
+var disableAdapter = false;         // If an error occurs, this variable is set to true which disables the adapter
+var hw_version;                     // Hardware version retrieved from the device
+var sw_version;                     // Software version retrieved from the device
+var hpin;                           // HPIN is the 'encrypted' PIN of the device
+var hspin;                          // HSPIN is the secret, depending on the current NONCE and the HPIN
+var nonce;                          // The current NONCE of the device
 
 
 // is called if a subscribed object changes
@@ -68,16 +65,17 @@ adapter.on('stateChange', function (id, state)
         if (String(id) === (adapter.namespace + ".device.prg"))
         {
             // Set new program
-            var post_data = '{"prg":' + state.val + '}';
+            var post_data_prg = '{"prg":' + state.val + '}';
 
             // Perform request
-            var request = require('request');
             request.post({
-                headers: createHeader(post_data),
+                headers: createHeader(post_data_prg),
                 url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
-                body:    post_data
+                body:    post_data_prg
             }, function(error, response, body)
             {
+                adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+
                 // POST was successful, perform ack
                 if (error === null)
                 {
@@ -93,16 +91,17 @@ adapter.on('stateChange', function (id, state)
         else if (String(id) === (adapter.namespace + ".device.sp_temp"))
         {
             // Set new program
-            var post_data = '{"sp_temp":' + state.val + '}';
+            var post_data_sp_temp = '{"sp_temp":' + state.val + '}';
 
             // Perform request
-            var request = require('request');
             request.post({
-                headers: createHeader(post_data),
+                headers: createHeader(post_data_sp_temp),
                 url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
-                body:    post_data
+                body:    post_data_sp_temp
             }, function(error, response, body)
             {
+                adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+
                 // POST was successful, perform ack
                 if (error === null)
                 {
@@ -114,22 +113,6 @@ adapter.on('stateChange', function (id, state)
                     adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
                 }
             });
-        }
-    }
-});
-
-
-// Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
-adapter.on('message', function (obj)
-{
-    if (typeof obj === 'object' && obj.message) {
-        if (obj.command === 'send')
-        {
-            // e.g. send email or pushover or whatever
-            console.log('send command');
-
-            // Send response in callback if required
-            if (obj.callback) adapter.sendTo(obj.from, obj.command, 'Message received', obj.callback);
         }
     }
 });
@@ -165,12 +148,12 @@ function pollDeviceStatus()
     clearTimeout(timer);
 
     // Calculate device link
-    let link = "http://" + adapter.config.fireplaceAddress + "/status.cgi";
+    var link = "http://" + adapter.config.fireplaceAddress + "/status.cgi";
 
     // Poll device state
     request(link, function (error, response, body)
     {
-        if (!error && response.statusCode == 200)
+        if (!error && response.statusCode === 200)
         {
             var result;
 
@@ -207,7 +190,9 @@ function pollDeviceStatus()
 
         // Poll again, except a critical error occurred
         if (!disableAdapter)
-            timer = setTimeout(function(){pollDeviceStatus()}, adapter.config.pollingInterval * 1000);
+        {
+            timer = setTimeout(function(){pollDeviceStatus();}, adapter.config.pollingInterval * 1000);
+        }
     });
 }
 
@@ -224,13 +209,13 @@ function updateConnectionStatus()
     // Query current connection indicator to check whether something changed at all
     adapter.getState("connected", function (err, state)
     {
-        let connectionSuccessfull =  noOfConnectionErrors == 0 ? true : false;
+        var connectionSuccessful = noOfConnectionErrors === 0;
 
         // Check whether the state has changed. If so, change state
-        if (state == null || state.val != connectionSuccessfull)
+        if (state === null || state.val !== connectionSuccessful)
         {
             // Update state
-            adapter.setState("connected", connectionSuccessfull, true);
+            adapter.setState("connected", connectionSuccessful, true);
         }
     });
 
@@ -238,7 +223,7 @@ function updateConnectionStatus()
     adapter.getState("missing_state", function (err, state)
     {
         // Check whether the state has changed. If so, change state
-        if (state == null || state.val != missingState)
+        if (state === null || state.val !== missingState)
         {
             // Update state
             adapter.setState("missing_state", missingState, true);
@@ -246,7 +231,7 @@ function updateConnectionStatus()
     });
 
     // Check if hardware / software combination is supported
-    if (hw_version != null && sw_version != null)
+    if (hw_version !== undefined && sw_version !== undefined)
     {
         try
         {
@@ -256,7 +241,9 @@ function updateConnectionStatus()
                 disableAdapter = true;
             }
             else
+            {
                 adapter.log.debug("Hardware / Software version is supported by this adapter!");
+            }
 
         }
         catch (err)
@@ -271,7 +258,7 @@ function updateConnectionStatus()
     adapter.getState("terminated", function (err, state)
     {
         // Check whether the state has changed. If so, change state
-        if (state == null || state.val != disableAdapter)
+        if (state === null || state.val !== disableAdapter)
         {
             // Update state
             adapter.setState("terminated", disableAdapter, true);
@@ -299,21 +286,21 @@ function syncState(state, path)
         Object.keys(state).forEach(function(key)
         {
             // If value is an object: recurse
-            if (typeof state[key] == "object" && !Array.isArray(state[key]))
+            if (typeof state[key] === "object" && !Array.isArray(state[key]))
             {
-                let newPath = path == "" ? key  : path + "." + key;
+                var newPath = path === "" ? key  : path + "." + key;
                 syncState(state[key], newPath);
             }
             // If value is atomic: process state
             else
             {
                 // Calculate stateName
-                let stateName = path == "" ? 'device.' + key  : 'device.' + path + "." + key;
-                let value = state[key];
+                var stateName = path === "" ? 'device.' + key  : 'device.' + path + "." + key;
+                var value = state[key];
 
                 // Store retrieved state in central data structure
-                let newState = [];
-                newState['value'] = value;
+                var newState = [];
+                newState.value = value;
                 deviceStates[stateName] = newState;
 
                 // Query current object to check whether the data definition is correct
@@ -327,7 +314,7 @@ function syncState(state, path)
                     }
 
                     // Check that object exists
-                    if (object != null)
+                    if (object !== null)
                     {
                         // Query current state to check whether something changed at all
                         adapter.getState(stateName, function (err, state)
@@ -338,26 +325,34 @@ function syncState(state, path)
                                 disableAdapter = true;
                             }
 
-                            let newState = deviceStates[stateName];
+                            var newState = deviceStates[stateName];
                             deviceStates[stateName] = null;
 
                             // State updates?
-                            if (state != null)
+                            if (state !== null)
                             {
-                                let newValue;
+                                var newValue;
 
                                 // Normalize new value
-                                if (typeof newState['value'] == "object")
-                                    newValue = JSON.stringify(newState['value']);
+                                if (typeof newState.value === "object")
+                                {
+                                    newValue = JSON.stringify(newState.value);
+                                }
                                 else
-                                    newValue = newState['value'];
+                                {
+                                    newValue = newState.value;
+                                }
 
                                 // Buffer HW-Version for supported version check
                                 if (stateName === "device.meta.hw_version" && hw_version !== newValue)
+                                {
                                     hw_version = newValue;
+                                }
                                 // Buffer SW-Version for supported version check
                                 else if (stateName === "device.meta.sw_version" && sw_version !== newValue)
+                                {
                                     sw_version = newValue;
+                                }
                                 // Buffer nonce to calculate HSPIN
                                 else if (stateName === "device.meta.nonce" && nonce !== newValue)
                                 {
@@ -366,7 +361,7 @@ function syncState(state, path)
                                 }
 
                                 // Check whether the state has changed. If so, change state
-                                if (state.val != newValue)
+                                if (state.val !== newValue)
                                 {
                                     adapter.log.debug("Detected new state for " + stateName + ": " + newValue + " (was: " + state.val + ")");
 
@@ -378,27 +373,31 @@ function syncState(state, path)
                             // Initial setting of states
                             else
                             {
-                                adapter.log.debug("Detected new state for " + stateName + ": " + newState['value']);
+                                adapter.log.debug("Detected new state for " + stateName + ": " + newState.value);
 
                                 // Update state
-                                if (typeof newState['value'] == "object")
-                                    adapter.setState(stateName, JSON.stringify(newState['value']), true);
+                                if (typeof newState.value === "object")
+                                {
+                                    adapter.setState(stateName, JSON.stringify(newState.value), true);
+                                }
                                 else
-                                    adapter.setState(stateName, newState['value'], true);
+                                {
+                                    adapter.setState(stateName, newState.value, true);
+                                }
                             }
                         });
                     }
                     // Object does not exist, implicates error in data model
                     else
                     {
-                        adapter.log.warn("State " + stateName + " does not exist null.");
+                        adapter.log.warn("State " + stateName + " does not exist.");
 
                         // Indicate that state is missing
                         missingState = true;
                     }
                 });
             }
-        })
+        });
     }
     catch (e)
     {
@@ -413,7 +412,7 @@ function syncState(state, path)
 // HSPIN = MD5(NONCE + HPIN)
 function calculateHSPIN(NONCE, HPIN)
 {
-    let result = md5(NONCE + HPIN);
+    var result = md5(NONCE + HPIN);
     adapter.log.debug('HSPIN: ' + HPIN);
 
     return result;
@@ -424,7 +423,7 @@ function calculateHSPIN(NONCE, HPIN)
 // HPIN = MD5(PIN)
 function calculateHPIN(PIN)
 {
-    let result = md5(PIN);
+    var result = md5(PIN);
     adapter.log.debug('HPIN: ' + result);
 
     return result;
@@ -434,7 +433,7 @@ function calculateHPIN(PIN)
 // Provides a header for a POST request
 function createHeader(post_data)
 {
-    let header = {
+    return {
         'Host':	adapter.config.fireplaceAddress,
         'Accept':	'*/*',
         'Proxy-Connection':	'keep-alive',
@@ -447,7 +446,5 @@ function createHeader(post_data)
         'User-Agent': 'ios',
         'Connection':	'keep-alive',
         'X-HS-PIN': hspin,
-    }
-
-    return header;
+    };
 }

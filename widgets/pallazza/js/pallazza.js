@@ -3,7 +3,7 @@
 
     version: "0.5.0"
 
-    Copyright 10.2015-2016 Marvin Grieger<mail@marvingrieger.de>
+    Copyright 10.2015-2016 Marvin Grieger<github@marvingrieger.de>
 
 */
 "use strict";

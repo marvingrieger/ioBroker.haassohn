@@ -24,7 +24,7 @@ This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device i
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2018 Marvin Grieger <mail@marvingrieger.de>
+Copyright (c) 2018 Marvin Grieger <github@marvingrieger.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
