@@ -53,13 +53,13 @@
     },
     "instanceObjects": [
         {
-            "_id": "device",
-            "type": "channel",
-            "common":
-            {
-                "name": "Device information"
-            },
-            "native": {}
+          "_id": "device",
+          "type": "channel",
+          "common":
+          {
+            "name": "Device information"
+          },
+          "native": {}
         },
         {
           "_id": "device.meta",
@@ -76,7 +76,8 @@
             "role": "indicator.connected",
             "name": "Connection to device successful?",
             "type": "boolean",
-            "read": true
+            "read": true,
+            "write": false
           },
           "native": {}
         },
@@ -86,7 +87,8 @@
           "common": {
             "name": "Is the adapter terminated due to a critical error?",
             "type": "boolean",
-            "read": true
+            "read": true,
+            "write": false
           },
           "native": {}
         },
@@ -96,7 +98,8 @@
           "common": {
             "name": "Is a state missing?",
             "type": "boolean",
-            "read": true
+            "read": true,
+            "write": false
           },
           "native": {}
         },
