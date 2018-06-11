@@ -77,15 +77,20 @@ adapter.on('stateChange', function (id, state)
                 adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
 
                 // POST was successful, perform ack
-                if (error === null)
+                if (error === null && response.statusCode === 200)
                 {
+                    // Acknowledge command
                     adapter.setState(adapter.namespace + ".device.prg", state.val, true);
                 }
                 // POST was not successful, revert
                 else
                 {
                     adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                    adapter.log.error('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
                 }
+
+                // Poll new state to update nonce immediately
+                pollDeviceStatus();
             });
         }
         else if (String(id) === (adapter.namespace + ".device.sp_temp"))
@@ -103,15 +108,20 @@ adapter.on('stateChange', function (id, state)
                 adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
 
                 // POST was successful, perform ack
-                if (error === null)
+                if (error === null && response.statusCode === 200)
                 {
+                    // Acknowledge command
                     adapter.setState(adapter.namespace + ".device.sp_temp", state.val, true);
                 }
                 // POST was not successful, revert
                 else
                 {
                     adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                    adapter.log.error('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
                 }
+
+                // Poll new state to update nonce immediately
+                pollDeviceStatus();
             });
         }
     }
