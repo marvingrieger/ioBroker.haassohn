@@ -43,14 +43,6 @@ var hspin;                          // HSPIN is the secret, depending on the cur
 var nonce;                          // The current NONCE of the device
 
 
-// is called if a subscribed object changes
-adapter.on('objectChange', function (id, obj)
-{
-    // Warning, obj can be null if it was deleted
-    adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
-});
-
-
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state)
 {
@@ -217,26 +209,32 @@ function updateConnectionStatus()
     }
 
     // Query current connection indicator to check whether something changed at all
-    adapter.getState("connected", function (err, state)
+    adapter.getState("info.connection", function (err, state)
     {
         var connectionSuccessful = noOfConnectionErrors === 0;
 
-        // Check whether the state has changed. If so, change state
-        if (state === null || state.val !== connectionSuccessful)
+        // Check whether the adapter shall be disabled
+        if (disableAdapter)
         {
             // Update state
-            adapter.setState("connected", connectionSuccessful, true);
+            adapter.setState("info.connection", false, true);
+        }
+        // Check whether the state has changed. If so, change state
+        else if (state === null || state.val !== connectionSuccessful)
+        {
+            // Update state
+            adapter.setState("info.connection", connectionSuccessful, true);
         }
     });
 
     // Query current missing-state indicator to check whether something changed at all
-    adapter.getState("missing_state", function (err, state)
+    adapter.getState("info.missing_state", function (err, state)
     {
         // Check whether the state has changed. If so, change state
         if (state === null || state.val !== missingState)
         {
             // Update state
-            adapter.setState("missing_state", missingState, true);
+            adapter.setState("info.missing_state", missingState, true);
         }
     });
 
@@ -265,13 +263,13 @@ function updateConnectionStatus()
     }
 
     // Query current state to check whether something changed at all
-    adapter.getState("terminated", function (err, state)
+    adapter.getState("info.terminated", function (err, state)
     {
         // Check whether the state has changed. If so, change state
         if (state === null || state.val !== disableAdapter)
         {
             // Update state
-            adapter.setState("terminated", disableAdapter, true);
+            adapter.setState("info.terminated", disableAdapter, true);
         }
 
         // Shall we disable the adapter?

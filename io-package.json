@@ -16,14 +16,14 @@
               "de": "Initiale Version"
           }
         },
-		"title": "HSP 6 PALLAZZA-III 534.08 adapter",
+		"title": "HSP 6 PALLAZZA-III 534.08",
         "titleLang": {
-            "en": "HSP 6 PALLAZZA-III 534.08 adapter",
-            "de": "HSP 6 PALLAZZA-III 534.08 Adapter"
+            "en": "HSP 6 PALLAZZA-III 534.08",
+            "de": "HSP 6 PALLAZZA-III 534.08"
         },
         "desc": {
-            "en": "Enables controlling a HSP 6 PALLAZZA-III 534.08 adapter",
-            "de": "Ermöglicht die Steuerung eines HSP 6 PALLAZZA-III 534.08 adapter"
+            "en": "Enables controlling a HSP 6 PALLAZZA-III 534.08",
+            "de": "Ermöglicht die Steuerung eines HSP 6 PALLAZZA-III 534.08"
         },
         "authors": [
             "Marvin Grieger <github@marvingrieger.de>"
@@ -42,7 +42,6 @@
         "readme": "https://github.com/grieger/ioBroker.pallazza/blob/master/README.md",
         "loglevel": "info",
         "type": "general",
-        "restartAdapters": ["vis"],
         "license": "MIT"
     },
     "native": {
@@ -52,6 +51,15 @@
         "supportedHwSwVersions": "{\"KS01_V6.02\":true}"
     },
     "instanceObjects": [
+        {
+          "_id": "info",
+          "type": "channel",
+          "common":
+          {
+            "name": "Adapter information"
+          },
+          "native": {}
+        },
         {
           "_id": "device",
           "type": "channel",
@@ -70,7 +78,7 @@
           "native": {}
         },
         {
-          "_id": "connected",
+          "_id": "info.connection",
           "type": "state",
           "common": {
             "role": "indicator.connected",
@@ -82,9 +90,10 @@
           "native": {}
         },
         {
-          "_id": "terminated",
+          "_id": "info.terminated",
           "type": "state",
           "common": {
+            "role": "indicator.maintenance",
             "name": "Is the adapter terminated due to a critical error?",
             "type": "boolean",
             "read": true,
@@ -93,9 +102,10 @@
           "native": {}
         },
         {
-          "_id": "missing_state",
+          "_id": "info.missing_state",
           "type": "state",
           "common": {
+            "role": "indicator.maintenance",
             "name": "Is a state missing?",
             "type": "boolean",
             "read": true,
@@ -107,6 +117,7 @@
           "_id": "device.meta.sw_version",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Software version",
             "type": "string",
             "read": true,
@@ -118,6 +129,7 @@
           "_id": "device.meta.hw_version",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Hardware version",
             "type": "string",
             "read": true,
@@ -129,6 +141,7 @@
           "_id": "device.meta.bootl_version",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Bootloader version",
             "type": "string",
             "read": true,
@@ -140,6 +153,7 @@
           "_id": "device.meta.wifi_sw_version",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Wifi firmware version",
             "type": "string",
             "read": true,
@@ -151,6 +165,7 @@
           "_id": "device.meta.wifi_bootl_version",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Wifi bootloader version",
             "type": "string",
             "read": true,
@@ -162,6 +177,7 @@
           "_id": "device.meta.sn",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Serial Number",
             "type": "string",
             "read": true,
@@ -173,6 +189,7 @@
           "_id": "device.meta.typ",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Device type",
             "type": "string",
             "read": true,
@@ -184,6 +201,7 @@
           "_id": "device.meta.language",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Language",
             "type": "string",
             "read": true,
@@ -195,6 +213,7 @@
           "_id": "device.meta.nonce",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "Current nonce",
             "type": "string",
             "read": true,
@@ -206,6 +225,7 @@
           "_id": "device.meta.wlan_features",
           "type": "state",
           "common": {
+            "role": "json",
             "name": "Wifi features",
             "type": "string",
             "read": true,
@@ -217,6 +237,7 @@
             "_id": "device.prg",
             "type": "state",
             "common": {
+              "role": "switch",
               "name": "Is the oven active?",
               "type": "boolean",
               "read": true,
@@ -228,6 +249,7 @@
           "_id": "device.wprg",
           "type": "state",
           "common": {
+            "role": "switch",
             "name": "Is the weekprogram active?",
             "type": "boolean",
             "read": true,
@@ -239,6 +261,7 @@
           "_id": "device.mode",
           "type": "state",
           "common": {
+            "role": "indicator.working",
             "name": "Mode of operation",
             "type": "string",
             "read": true,
@@ -255,6 +278,7 @@
           "_id": "device.sp_temp",
           "type": "state",
           "common": {
+            "role": "value.temperature",
             "name": "Target temperature",
             "type": "number",
             "read": true,
@@ -266,6 +290,7 @@
           "_id": "device.is_temp",
           "type": "state",
           "common": {
+            "role": "value.temperature",
             "name": "Current temperature",
             "type": "number",
             "read": true,
@@ -277,6 +302,7 @@
           "_id": "device.ht_char",
           "type": "state",
           "common": {
+            "role": "state",
             "name": "?",
             "type": "number",
             "read": true,
@@ -288,6 +314,7 @@
           "_id": "device.weekprogram",
           "type": "state",
           "common": {
+            "role": "json",
             "name": "Week program",
             "type": "string",
             "read": true,
@@ -299,6 +326,7 @@
           "_id": "device.error",
           "type": "state",
           "common": {
+            "role": "text",
             "name": "Error",
             "type": "string",
             "read": true,
@@ -310,6 +338,7 @@
           "_id": "device.eco_mode",
           "type": "state",
           "common": {
+            "role": "switch",
             "name": "Eco mode indicator",
             "type": "boolean",
             "read": true,
@@ -321,6 +350,7 @@
           "_id": "device.pgi",
           "type": "state",
           "common": {
+            "role": "switch",
             "name": "?",
             "type": "boolean",
             "read": true,
@@ -332,6 +362,7 @@
           "_id": "device.ignitions",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "Number of ignitions",
             "type": "number",
             "read": true,
@@ -343,6 +374,7 @@
           "_id": "device.on_time",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "?",
             "type": "number",
             "read": true,
@@ -354,6 +386,7 @@
           "_id": "device.consumption",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "Consumed pellets",
             "type": "number",
             "read": true,
@@ -366,6 +399,7 @@
           "_id": "device.maintenance_in",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "Duration until maintenance required",
             "type": "number",
             "read": true,
@@ -378,6 +412,7 @@
           "_id": "device.cleaning_in",
           "type": "state",
           "common": {
+            "role": "value",
             "name": "Duration until cleaning required",
             "type": "number",
             "read": true,
