@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "news": {
+          "0.2.1": {
+            "en": "Added missing state",
+            "de": "Fehlenden Zustand hinzugefügt"
+          },
           "0.2.0": {
             "en": "It is now possible to control the oven",
             "de": "Steuerung des Ofens möglich"
@@ -234,16 +238,16 @@
           "native": {}
         },
         {
-            "_id": "device.prg",
-            "type": "state",
-            "common": {
-              "role": "switch",
-              "name": "Is the oven active?",
-              "type": "boolean",
-              "read": true,
-              "write": true
-            },
-            "native": {}
+          "_id": "device.prg",
+          "type": "state",
+          "common": {
+           "role": "switch",
+           "name": "Is the oven active?",
+           "type": "boolean",
+           "read": true,
+           "write": true
+          },
+          "native": {}
         },
         {
           "_id": "device.wprg",
@@ -271,6 +275,18 @@
               "start": "start",
               "heating": "heating"
             }
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.zone",
+          "type": "state",
+          "common": {
+            "role": "value",
+            "name": "Zone of operation",
+            "type": "number",
+            "read": true,
+            "write": false
           },
           "native": {}
         },
