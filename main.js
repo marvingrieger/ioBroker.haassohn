@@ -3,7 +3,7 @@
 'use strict';
 
 // Dependencies
-var utils = require('@iobroker/adapter-core'); Get common adapter utils
+var utils = require('@iobroker/adapter-core'); // Get common adapter utils
 var md5 = require('md5');
 var request = require('request');
 
