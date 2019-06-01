@@ -3,7 +3,7 @@
 'use strict';
 
 // Dependencies
-var utils =    require(__dirname + '/lib/utils'); // You have to require the utils module and call adapter function; Get common adapter utils
+var utils = require('@iobroker/adapter-core'); // Get common adapter utils
 var md5 = require('md5');
 var request = require('request');
 

@@ -1,5 +1,5 @@
 # ioBroker.pallazza
-
+![Number of Installations](http://iobroker.live/badges/pallazza-installed.svg) ![Number of Installations](http://iobroker.live/badges/pallazza-stable.svg) 
 [![Tests](https://travis-ci.org/marvingrieger/ioBroker.pallazza.svg?branch=master)](https://travis-ci.org/marvingrieger/ioBroker.pallazza) [![Tests](https://ci.appveyor.com/api/projects/status/pa1806omq9l1qdii?svg=true)](https://ci.appveyor.com/project/marvingrieger/iobroker-pallazza)
 
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
