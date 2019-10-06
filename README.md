@@ -3,7 +3,9 @@
 
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
 
-This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device in ioBroker.
+This adapter enables to control Haas+Sohn HSP devices:
+* HSP 6 PALLAZZA-III 534.08
+* HSP 2.17 PREMIUM
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -13,6 +15,9 @@ This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device i
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.2
+* Added support for KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM)
+
 ### 0.2.1
 * Added missing state
 
@@ -28,7 +33,7 @@ This adapter enables to control a Haas+Sohn - HSP 6 PALLAZZA-III 534.08 device i
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2018 Marvin Grieger <github@marvingrieger.de>
+Copyright (c) 2019 Marvin Grieger <github@marvingrieger.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

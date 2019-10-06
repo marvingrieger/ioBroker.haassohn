@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.1",
+        "version": "0.2.2",
         "news": {
+          "0.2.2": {
+            "en": "Added support for KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM)",
+            "de": "Unterstützung von KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM) hinzugefügt"
+          },
           "0.2.1": {
             "en": "Added missing state",
             "de": "Fehlenden Zustand hinzugefügt"
@@ -20,14 +24,14 @@
               "de": "Initiale Version"
           }
         },
-		"title": "HSP 6 PALLAZZA-III 534.08",
+		"title": "Haas+Sohn HSP",
         "titleLang": {
-            "en": "HSP 6 PALLAZZA-III 534.08",
-            "de": "HSP 6 PALLAZZA-III 534.08"
+            "en": "Haas+Sohn HSP",
+            "de": "Haas+Sohn HSP"
         },
         "desc": {
-            "en": "Enables controlling a HSP 6 PALLAZZA-III 534.08",
-            "de": "Ermöglicht die Steuerung eines HSP 6 PALLAZZA-III 534.08"
+            "en": "Enables controlling Haas+Sohn HSP 6 devices",
+            "de": "Ermöglicht die Steuerung von Haas+Sohn HSP Geräten"
         },
         "authors": [
             "Marvin Grieger <github@marvingrieger.de>"
@@ -49,10 +53,10 @@
         "license": "MIT"
     },
     "native": {
-        "fireplaceAddress": "127.0.0.1:4200",
-        "pollingInterval": "10",
+        "fireplaceAddress": "127.0.0.1",
+        "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V6.02\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true}"
     },
     "instanceObjects": [
         {
