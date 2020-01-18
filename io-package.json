@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.2",
+        "version": "0.2.3",
         "news": {
+          "0.2.3": {
+            "en": "Added support for KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU)",
+            "de": "Unterstützung von KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU) hinzugefügt"
+          },
           "0.2.2": {
             "en": "Added support for KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM)",
             "de": "Unterstützung von KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM) hinzugefügt"
@@ -56,7 +60,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true}"
     },
     "instanceObjects": [
         {
@@ -438,6 +442,54 @@
             "read": true,
             "write": false,
             "unit": "minutes"
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.eco_editable",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "Is the eco-mode editable",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.ts",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "?",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.ean",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "?",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.rau",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "?",
+            "type": "string",
+            "read": true,
+            "write": false
           },
           "native": {}
         }
