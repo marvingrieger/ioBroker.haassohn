@@ -3,10 +3,11 @@
 
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
 
-This adapter enables to control Haas+Sohn HSP devices:
+This adapter has been tested on the following Haas+Sohn devices:
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 7 DIANA Plus RLU (V7.06)
+* HSP 6 HELENA RLU (V7.07)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -16,6 +17,10 @@ This adapter enables to control Haas+Sohn HSP devices:
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.4
+* Added support for KS01_V7.07 (Haas+Sohn Haas+Sohn HSP 6 HELENA RLU)
+* Refined some states
+
 ### 0.2.3
 * Added support for KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU)
 

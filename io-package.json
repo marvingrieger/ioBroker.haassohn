@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.3",
+        "version": "0.2.4",
         "news": {
+          "0.2.4": {
+            "en": "Added support for KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU), refined some states",
+            "de": "Unterstützung von KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert"
+          },
           "0.2.3": {
             "en": "Added support for KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU)",
             "de": "Unterstützung von KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU) hinzugefügt"
@@ -60,7 +64,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true}"
     },
     "instanceObjects": [
         {
@@ -327,7 +331,7 @@
           "type": "state",
           "common": {
             "role": "state",
-            "name": "?",
+            "name": "Heating Curve",
             "type": "number",
             "read": true,
             "write": false
@@ -399,7 +403,7 @@
           "type": "state",
           "common": {
             "role": "value",
-            "name": "?",
+            "name": "Operating hours",
             "type": "number",
             "read": true,
             "write": false
@@ -451,7 +455,7 @@
           "common": {
             "role": "text",
             "name": "Is the eco-mode editable",
-            "type": "string",
+            "type": "boolean",
             "read": true,
             "write": false
           },
@@ -474,7 +478,7 @@
           "type": "state",
           "common": {
             "role": "text",
-            "name": "?",
+            "name": "EAN (European Article Number)",
             "type": "string",
             "read": true,
             "write": false

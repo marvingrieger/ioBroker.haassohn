@@ -1,6 +1,6 @@
 {
   "name": "iobroker.pallazza",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "ioBroker pallazza Adapter",
   "author": {
     "name": "Marvin Grieger",
