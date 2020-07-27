@@ -17,6 +17,9 @@ This adapter has been tested on the following Haas+Sohn devices:
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.5
+* Added support for KS01_V7.08
+
 ### 0.2.4
 * Added support for KS01_V7.07 (Haas+Sohn Haas+Sohn HSP 6 HELENA RLU)
 * Refined some states
