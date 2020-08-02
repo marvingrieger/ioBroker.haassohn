@@ -19,7 +19,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 
 ## Changelog
 ### 0.2.5
-* Added support for KS01_V7.08
+* Added support for KS01_V7.08 (HSP 6 Pelletto IV 434.08)
 * Refined some states
 
 ### 0.2.4
