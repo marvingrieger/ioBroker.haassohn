@@ -8,6 +8,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 6 HELENA RLU (V7.07)
+* HSP 6 Pelletto IV 434.08 (V7.08)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -17,6 +18,10 @@ This adapter has been tested on the following Haas+Sohn devices:
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.5
+* Added support for KS01_V7.08
+* Refined some states
+
 ### 0.2.4
 * Added support for KS01_V7.07 (Haas+Sohn Haas+Sohn HSP 6 HELENA RLU)
 * Refined some states

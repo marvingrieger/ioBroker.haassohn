@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.4",
+        "version": "0.2.5",
         "news": {
+          "0.2.5": {
+            "en": "Added support for KS01_V7.08, refined some states",
+            "de": "Unterstützung von KS01_V7.08 hinzugefügt, Zustände verfeinert"
+          },
           "0.2.4": {
             "en": "Added support for KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU), refined some states",
             "de": "Unterstützung von KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert"
@@ -64,7 +68,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true}"
     },
     "instanceObjects": [
         {
@@ -487,6 +491,18 @@
         },
         {
           "_id": "device.meta.rau",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "?",
+            "type": "string",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.meta.itemid",
           "type": "state",
           "common": {
             "role": "text",
