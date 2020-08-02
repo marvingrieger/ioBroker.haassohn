@@ -8,6 +8,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 6 HELENA RLU (V7.07)
+* HSP 6 Pelletto IV 434.08 (V7.08)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
