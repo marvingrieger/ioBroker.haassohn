@@ -72,7 +72,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\"}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\":true}"
     },
     "instanceObjects": [
         {
