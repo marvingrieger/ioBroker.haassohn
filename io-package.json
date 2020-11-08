@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.5",
+        "version": "0.2.6",
         "news": {
           "0.2.6": {
             "en": "Added support for KS01_V5.12",
