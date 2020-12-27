@@ -3,8 +3,12 @@
         "name": "pallazza",
         "version": "0.2.6",
         "news": {
+          "0.2.7": {
+            "en": "Added support for KS01_V7.04-oKV (Haas+Sohn HSP-7 DIANA (V7.04))",
+            "de": "Unterstützung von KS01_V7.04-oKV hinzugefügt"
+          },
           "0.2.6": {
-            "en": "Added support for KS01_V5.12",
+            "en": "Added support for KS01_V5.12 (Haas+Sohn HSP 6 PALLAZZA-III 519.0)",
             "de": "Unterstützung von KS01_V5.12 hinzugefügt"
           },
           "0.2.5": {
@@ -72,7 +76,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\":true, \"KS01_V7.04-oKV\":true}"
     },
     "instanceObjects": [
         {
