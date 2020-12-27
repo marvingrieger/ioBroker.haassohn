@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.6",
+        "version": "0.2.7",
         "news": {
           "0.2.7": {
             "en": "Added support for KS01_V7.04-oKV (Haas+Sohn HSP-7 DIANA (V7.04))",
