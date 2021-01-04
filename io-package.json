@@ -1,31 +1,35 @@
 {
     "common": {
         "name": "pallazza",
-        "version": "0.2.7",
+        "version": "0.2.8",
         "news": {
+        	"0.2.7": {
+            "en": "Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "de": "Unterstützung von KS01_V5.10 (HSP 8 Catania-II 444.08-ST) hinzugefügt"
+          },
           "0.2.7": {
-            "en": "Added support for KS01_V7.04-oKV (Haas+Sohn HSP-7 DIANA (V7.04))",
-            "de": "Unterstützung von KS01_V7.04-oKV hinzugefügt"
+            "en": "Added support for KS01_V7.04-oKV (HSP 7 DIANA)",
+            "de": "Unterstützung von KS01_V7.04-oKV (HSP 7 DIANA) hinzugefügt"
           },
           "0.2.6": {
-            "en": "Added support for KS01_V5.12 (Haas+Sohn HSP 6 PALLAZZA-III 519.0)",
-            "de": "Unterstützung von KS01_V5.12 hinzugefügt"
+            "en": "Added support for KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "de": "Unterstützung von KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)hinzugefügt"
           },
           "0.2.5": {
-            "en": "Added support for KS01_V7.08, refined some states",
-            "de": "Unterstützung von KS01_V7.08 hinzugefügt, Zustände verfeinert"
+            "en": "Added support for KS01_V7.08 (HSP 6 Pelletto IV 434.08), refined some states",
+            "de": "Unterstützung von KS01_V7.08 (HSP 6 Pelletto IV 434.08) hinzugefügt, Zustände verfeinert"
           },
           "0.2.4": {
-            "en": "Added support for KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU), refined some states",
-            "de": "Unterstützung von KS01_V7.07 (Haas+Sohn HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert"
+            "en": "Added support for KS01_V7.07 (HSP 6 HELENA RLU), refined some states",
+            "de": "Unterstützung von KS01_V7.07 (HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert"
           },
           "0.2.3": {
-            "en": "Added support for KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU)",
-            "de": "Unterstützung von KS01_V7.06 (Haas+Sohn HSP 7 DIANA Plus RLU) hinzugefügt"
+            "en": "Added support for KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "de": "Unterstützung von KS01_V7.06 (HSP 7 DIANA Plus RLU) hinzugefügt"
           },
           "0.2.2": {
-            "en": "Added support for KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM)",
-            "de": "Unterstützung von KS01_V5.13 (Haas+Sohn HSP 2.17 PREMIUM) hinzugefügt"
+            "en": "Added support for KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "de": "Unterstützung von KS01_V5.13 (HSP 2.17 PREMIUM) hinzugefügt"
           },
           "0.2.1": {
             "en": "Added missing state",
@@ -76,7 +80,7 @@
         "fireplaceAddress": "127.0.0.1",
         "pollingInterval": "30",
         "pin": "0000",
-        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\":true, \"KS01_V7.04-oKV\":true}"
+        "supportedHwSwVersions": "{\"KS01_V5.13\":true, \"KS01_V6.02\":true, \"KS01_V7.06\":true, \"KS01_V7.07\":true, \"KS01_V7.08\":true, \"KS01_V5.12\":true, \"KS01_V7.04-oKV\":true, \"KS01_V5.10\":true}"
     },
     "instanceObjects": [
         {
