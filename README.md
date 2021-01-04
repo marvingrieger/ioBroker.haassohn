@@ -4,7 +4,6 @@
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
 
 This adapter has been tested on the following Haas+Sohn devices:
-* KS01_V5.10
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
@@ -12,6 +11,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 * HSP 6 Pelletto IV 434.08 (V7.08)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
+* HSP 8 Catania-II 444.08-ST (V5.10)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -22,7 +22,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 
 ## Changelog
 ### 0.2.8
-* Added support for KS01_V5.10
+* Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)
 
 ### 0.2.7
 * Added support for KS01_V7.04-oKV (HSP-7 DIANA)
