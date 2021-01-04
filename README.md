@@ -4,6 +4,7 @@
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
 
 This adapter has been tested on the following Haas+Sohn devices:
+* KS01_V5.10
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
@@ -20,6 +21,9 @@ This adapter has been tested on the following Haas+Sohn devices:
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.8
+* Added support for KS01_V5.10
+
 ### 0.2.7
 * Added support for KS01_V7.04-oKV (HSP-7 DIANA)
 
@@ -55,7 +59,7 @@ This adapter has been tested on the following Haas+Sohn devices:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2019 Marvin Grieger <github@marvingrieger.de>
+Copyright (c) 2020 Marvin Grieger <github@marvingrieger.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
