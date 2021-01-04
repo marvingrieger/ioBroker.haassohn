@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
 
-This adapter has been tested on the following Haas+Sohn devices:
+This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
