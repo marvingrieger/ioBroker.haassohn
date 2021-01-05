@@ -1,9 +1,13 @@
 {
     "common": {
-        "name": "pallazza",
-        "version": "0.2.8",
+        "name": "haassohn",
+        "version": "0.3.0",
         "news": {
-        	"0.2.7": {
+          "0.3.0": {
+            "en": "Renamed adapter to iobroker.haassohn",
+            "de": "Adapter in iobroker.haassohn umbenannt"
+          },
+          "0.2.8": {
             "en": "Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
             "de": "Unterstützung von KS01_V5.10 (HSP 8 Catania-II 444.08-ST) hinzugefügt"
           },
@@ -48,14 +52,14 @@
               "de": "Initiale Version"
           }
         },
-		"title": "Haas+Sohn HSP",
+		"title": "Haas+Sohn",
         "titleLang": {
-            "en": "Haas+Sohn HSP",
-            "de": "Haas+Sohn HSP"
+            "en": "Haas+Sohn",
+            "de": "Haas+Sohn"
         },
         "desc": {
-            "en": "Enables controlling Haas+Sohn HSP 6 devices",
-            "de": "Ermöglicht die Steuerung von Haas+Sohn HSP Geräten"
+            "en": "Enables controlling Haas+Sohn devices",
+            "de": "Ermöglicht die Steuerung von Haas+Sohn Geräten"
         },
         "authors": [
             "Marvin Grieger <github@marvingrieger.de>"
@@ -69,9 +73,9 @@
         "icon": "haassohn.png",
         "materialize": true,
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/grieger/ioBroker.pallazza/master/admin/haassohn.png",
+        "extIcon": "https://raw.githubusercontent.com/grieger/ioBroker.haassohn/master/admin/haassohn.png",
         "keywords": ["haas", "sohn", "fireplace", "home automation"],
-        "readme": "https://github.com/grieger/ioBroker.pallazza/blob/master/README.md",
+        "readme": "https://github.com/grieger/ioBroker.haassohn/blob/master/README.md",
         "loglevel": "info",
         "type": "general",
         "license": "MIT"

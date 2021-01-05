@@ -1,7 +1,7 @@
 {
-  "name": "iobroker.pallazza",
-  "version": "0.2.8",
-  "description": "ioBroker pallazza Adapter",
+  "name": "iobroker.haassohn",
+  "version": "0.3.0",
+  "description": "ioBroker Haas+Sohn Adapter",
   "author": {
     "name": "Marvin Grieger",
     "email": "github@marvingrieger.de"
@@ -12,17 +12,17 @@
       "email": "github@marvingrieger.de"
     }
   ],
-  "homepage": "https://github.com/ioBroker/ioBroker.pallazza",
+  "homepage": "https://github.com/ioBroker/ioBroker.haassohn",
   "license": "MIT",
   "keywords": [
     "ioBroker",
-    "pallazza",
+    "haas+sohn",
     "Smart Home",
     "home automation"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.pallazza"
+    "url": "https://github.com/ioBroker/ioBroker.haassohn"
   },
   "dependencies": {
     "md5": "^2.2.1",
@@ -43,7 +43,7 @@
     "test:integration": "mocha test/integration --exit"
   },
   "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.pallazza/issues"
+    "url": "https://github.com/ioBroker/ioBroker.haassohn/issues"
   },
   "readmeFilename": "README.md"
 }

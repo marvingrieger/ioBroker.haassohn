@@ -1,7 +1,7 @@
-# ioBroker.pallazza
-[![Number of Installations](http://iobroker.live/badges/pallazza-installed.svg)](http://iobroker.live/badges/pallazza-stable.svg) [![Tests](https://travis-ci.org/marvingrieger/ioBroker.pallazza.svg?branch=master)](https://travis-ci.org/marvingrieger/ioBroker.pallazza) [![Tests](https://ci.appveyor.com/api/projects/status/pa1806omq9l1qdii?svg=true)](https://ci.appveyor.com/project/marvingrieger/iobroker-pallazza)
+# ioBroker.haassohn
+[![Number of Installations](http://iobroker.live/badges/haassohn-installed.svg)](http://iobroker.live/badges/haassohn-stable.svg) [![Tests](https://travis-ci.org/marvingrieger/ioBroker.haassohn.svg?branch=master)](https://travis-ci.org/marvingrieger/ioBroker.haassohn) [![Tests](https://ci.appveyor.com/api/projects/status/pa1806omq9l1qdii?svg=true)](https://ci.appveyor.com/project/marvingrieger/iobroker-haassohn)
 
-[![NPM](https://nodei.co/npm/iobroker.pallazza.png)](https://npmjs.org/package/iobroker.pallazza)
+[![NPM](https://nodei.co/npm/iobroker.haassohn.png)](https://npmjs.org/package/iobroker.haassohn)
 
 This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
@@ -21,6 +21,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 0.2.8
+* Renamed adapter to iobroker.haassohn
+
 ### 0.2.8
 * Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)
 
