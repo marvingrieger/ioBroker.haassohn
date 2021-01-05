@@ -21,6 +21,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.0
+* Published adapter in ioBroker repository
+
 ### 0.3.0
 * Renamed adapter to iobroker.haassohn
 
