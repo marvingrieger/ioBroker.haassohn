@@ -77,7 +77,7 @@
         "icon": "haassohn.png",
         "materialize": true,
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/grieger/ioBroker.haassohn/master/admin/haassohn.png",
+        "extIcon": "https://raw.githubusercontent.com/marvingrieger/ioBroker.haassohn/master/admin/haassohn.png",
         "keywords": ["haas", "sohn", "fireplace", "home automation"],
         "readme": "https://github.com/grieger/ioBroker.haassohn/blob/master/README.md",
         "loglevel": "info",
