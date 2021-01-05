@@ -62,7 +62,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2020 Marvin Grieger <github@marvingrieger.de>
+Copyright (c) 2021 Marvin Grieger <github@marvingrieger.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

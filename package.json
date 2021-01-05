@@ -1,6 +1,6 @@
 {
   "name": "iobroker.haassohn",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "ioBroker Haas+Sohn Adapter",
   "author": {
     "name": "Marvin Grieger",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.haassohn"
+    "url": "https://github.com/ioBroker/ioBroker.haassohn.git"
   },
   "dependencies": {
     "md5": "^2.2.1",
