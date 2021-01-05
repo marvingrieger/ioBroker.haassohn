@@ -245,12 +245,12 @@ function updateConnectionStatus()
         {
             if (!JSON.parse(adapter.config.supportedHwSwVersions)[hw_version + "_" + sw_version])
             {
-                adapter.log.error("Hardware / Software version (" + hw_version + "_" + sw_version + ") is not supported by this adapter!");
+                adapter.log.error("Hardware / Software version (" + hw_version + "_" + sw_version + ") is not supported by this adapter! Please open an issue on GitHub.");
                 disableAdapter = true;
             }
             else
             {
-                adapter.log.debug("Hardware / Software version is supported by this adapter!");
+                adapter.log.debug("Hardware / Software version is supported by this adapter! Please open an issue on GitHub.");
             }
 
         }
@@ -398,7 +398,7 @@ function syncState(state, path)
                     // Object does not exist, implicates error in data model
                     else
                     {
-                        adapter.log.warn("State " + stateName + " does not exist. Please contact the developer.");
+                        adapter.log.warn("State " + stateName + " does not exist. Please open an issue on GitHub..");
 
                         // Indicate that state is missing
                         missingState = true;
