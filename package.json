@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ioBroker/ioBroker.haassohn.git"
+    "url": "git+https://github.com/marvingrieger/ioBroker.haassohn.git"
   },
   "dependencies": {
     "md5": "^2.2.1",

@@ -65,7 +65,7 @@
             "en": "Enables controlling Haas+Sohn devices",
             "de": "Ermöglicht die Steuerung von Haas+Sohn Geräten"
         },
-        "author": [
+        "authors": [
             "Marvin Grieger <github@marvingrieger.de>"
         ],
         "docs": {
