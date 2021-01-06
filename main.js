@@ -1,5 +1,6 @@
 /* jshint -W097 */// jshint strict:false
 /*jslint node: true */
+/*jshint esversion: 6 */
 'use strict';
 
 // Dependencies
@@ -10,12 +11,69 @@ var request = require('request');
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.haassohn.0
-var adapter = new utils.Adapter('haassohn');
 
-// is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', function (callback)
+// Variables
+var deviceStates = [];     			// Used to internally buffer the retrieved states before writing them to the adapter
+var noOfConnectionErrors = 0;       // Counter for connection problems
+var missingState = false;           // If a device state cannot be mapped to an internal state of the adapter, this variable gets set
+var timer;                          // Settimeout-Pointer to the poll-function
+var disableAdapter = false;         // If an error occurs, this variable is set to true which disables the adapter
+var hw_version;                     // Hardware version retrieved from the device
+var sw_version;                     // Software version retrieved from the device
+var hpin;                           // HPIN is the 'encrypted' PIN of the device
+var hspin;                          // HSPIN is the secret, depending on the current NONCE and the HPIN
+var nonce;                          // The current NONCE of the device
+let adapter;						// Adapter object
+
+// Start Adapter function
+function startAdapter(options) {
+    options = options || {};
+    
+    Object.assign(options, {
+        name: "haassohn",
+        
+        // is called when databases are connected and adapter received configuration.
+		// start here!
+        ready: () => {
+            initialize();
+        },
+        
+        // is called when adapter shuts down - callback has to be called under any circumstances!
+        unload: (callback) => {
+            terminate(callback);
+        },
+        
+        
+        // is called if a subscribed state changes
+        stateChange: (id, state) => {
+            handleStateChange(id, state);
+        }
+    });
+    
+    adapter = new utils.Adapter(options);
+ 
+    return adapter;
+}
+
+
+// Initialization
+function initialize()
 {
-    try
+    // All states changes inside the adapters namespace are subscribed
+    adapter.subscribeStates('*');
+
+    // Calculate HPIN
+    hpin = calculateHPIN(adapter.config.pin);
+
+    // Start polling
+    pollDeviceStatus();
+}
+
+
+// Cleanup and terminate the adapter
+function terminate(callback)
+{
+	try
     {
         adapter.log.info('Adapter is shutting down. Cleaning everything up');
 
@@ -28,23 +86,11 @@ adapter.on('unload', function (callback)
     {
         callback();
     }
-});
-
-// Variables
-var deviceStates = [];     // Used to internally buffer the retrieved states before writing them to the adapter
-var noOfConnectionErrors = 0;       // Counter for connection problems
-var missingState = false;           // If a device state cannot be mapped to an internal state of the adapter, this variable gets set
-var timer;                          // Settimeout-Pointer to the poll-function
-var disableAdapter = false;         // If an error occurs, this variable is set to true which disables the adapter
-var hw_version;                     // Hardware version retrieved from the device
-var sw_version;                     // Software version retrieved from the device
-var hpin;                           // HPIN is the 'encrypted' PIN of the device
-var hspin;                          // HSPIN is the secret, depending on the current NONCE and the HPIN
-var nonce;                          // The current NONCE of the device
+}
 
 
-// is called if a subscribed state changes
-adapter.on('stateChange', function (id, state)
+// Handle a state change
+function handleStateChange(id, state)
 {
     // Warning, state can be null if it was deleted
     adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
@@ -117,27 +163,6 @@ adapter.on('stateChange', function (id, state)
             });
         }
     }
-});
-
-
-// is called when databases are connected and adapter received configuration.
-// start here!
-adapter.on('ready', function ()
-{
-    initialize();
-});
-
-
-function initialize()
-{
-    // All states changes inside the adapters namespace are subscribed
-    adapter.subscribeStates('*');
-
-    // Calculate HPIN
-    hpin = calculateHPIN(adapter.config.pin);
-
-    // Start polling
-    pollDeviceStatus();
 }
 
 
@@ -455,4 +480,16 @@ function createHeader(post_data)
         'Connection':	'keep-alive',
         'X-HS-PIN': hspin,
     };
+}
+
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) 
+{
+    module.exports = startAdapter;
+} 
+else
+{
+    // or start the instance directly
+    startAdapter();
 }

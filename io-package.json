@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "news": {
+          "1.0.1": {
+            "en": "Support of compact mode",
+            "de": "Compact mode wird nun unterstützt"
+          },
           "1.0.0": {
             "en": "Published adapter in iobroker repository",
             "de": "Adapter dem ioBroker-Repository hinzugefügt"
@@ -84,7 +88,8 @@
         "type": "iot-systems",
         "connectionType": "local",
         "dataSource": "poll",
-        "license": "MIT"
+        "license": "MIT",
+        "compact": true
     },
     "native": {
         "fireplaceAddress": "127.0.0.1",
