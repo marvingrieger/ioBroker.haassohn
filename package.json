@@ -40,7 +40,8 @@
   "scripts": {
     "test": "npm run test:package && npm run test:unit",
     "test:package": "mocha test/package --exit",
-    "test:integration": "mocha test/integration --exit"
+    "test:integration": "mocha test/integration --exit",
+    "test:unit": "mocha test/unit --exit"
   },
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.haassohn/issues"
