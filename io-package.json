@@ -3,61 +3,185 @@
         "name": "haassohn",
         "version": "1.0.2",
         "news": {
+          "1.0.2": {
+            "en": "Fixed findings of code review",
+            "de": "Ergebnisse der Codeprüfung wurden eingearbeitet",
+            "ru": "Исправленные результаты проверки кода",
+            "pt": "Descobertas corrigidas da revisão de código",
+            "nl": "Vaste bevindingen van codereview",
+            "fr": "Correction des résultats de la révision du code",
+            "it": "Risolti i risultati della revisione del codice",
+            "es": "Hallazgos fijos de la revisión del código",
+            "pl": "Naprawiono ustalenia z przeglądu kodu",
+            "zh-cn": "修正了代码审查的发现"
+          },
           "1.0.1": {
             "en": "Support of compact mode",
-            "de": "Compact mode wird nun unterstützt"
+            "de": "Compact mode wird nun unterstützt",
+            "ru": "Поддержка компактного режима",
+            "pt": "Suporte para modo compacto",
+            "nl": "Ondersteuning van compacte modus",
+            "fr": "Prise en charge du mode compact",
+            "it": "Supporto della modalità compatta",
+            "es": "Soporte de modo compacto",
+            "pl": "Obsługa trybu kompaktowego",
+            "zh-cn": "支持紧凑模式"
           },
           "1.0.0": {
             "en": "Published adapter in iobroker repository",
-            "de": "Adapter dem ioBroker-Repository hinzugefügt"
+            "de": "Adapter dem ioBroker-Repository hinzugefügt",
+            "ru": "Опубликован адаптер в репозитории iobroker",
+            "pt": "Adaptador publicado no repositório iobroker",
+            "nl": "Gepubliceerde adapter in iobroker-repository",
+            "fr": "Adaptateur publié dans le référentiel iobroker",
+            "it": "Adattatore pubblicato nel repository iobroker",
+            "es": "Adaptador publicado en el repositorio de iobroker",
+            "pl": "Opublikowany adapter w repozytorium iobroker",
+            "zh-cn": "iobroker存储库中已发布的适配器"
           },
           "0.3.0": {
             "en": "Renamed adapter to iobroker.haassohn",
-            "de": "Adapter in iobroker.haassohn umbenannt"
+            "de": "Adapter in iobroker.haassohn umbenannt",
+            "ru": "Адаптер переименован в iobroker.haassohn",
+            "pt": "Adaptador renomeado para iobroker.haassohn",
+            "nl": "Hernoemde adapter naar iobroker.haassohn",
+            "fr": "Adaptateur renommé en iobroker.haassohn",
+            "it": "Adattatore rinominato in iobroker.haassohn",
+            "es": "Adaptador renombrado a iobroker.haassohn",
+            "pl": "Zmieniono nazwę adaptera na iobroker.haassohn",
+            "zh-cn": "将适配器重命名为iobroker.haassohn"
           },
           "0.2.8": {
             "en": "Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
-            "de": "Unterstützung von KS01_V5.10 (HSP 8 Catania-II 444.08-ST) hinzugefügt"
+            "de": "Unterstützung von KS01_V5.10 (HSP 8 Catania-II 444.08-ST) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V5.10 (HSP 8 Catania-II 444.08-ST).",
+            "pt": "Adicionado suporte para KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "fr": "Ajout de la prise en charge de KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "it": "Aggiunto supporto per KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "es": "Soporte agregado para KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "pl": "Dodano obsługę KS01_V5.10 (HSP 8 Catania-II 444.08-ST)",
+            "zh-cn": "添加了对KS01_V5.10（HSP 8 Catania-II 444.08-ST）的支持"
           },
           "0.2.7": {
             "en": "Added support for KS01_V7.04-oKV (HSP 7 DIANA)",
-            "de": "Unterstützung von KS01_V7.04-oKV (HSP 7 DIANA) hinzugefügt"
+            "de": "Unterstützung von KS01_V7.04-oKV (HSP 7 DIANA) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V7.04-окВ (HSP 7 DIANA).",
+            "pt": "Adicionado suporte para KS01_V7.04-oKV (HSP 7 DIANA)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.04-oKV (HSP 7 DIANA)",
+            "fr": "Ajout de la prise en charge de KS01_V7.04-oKV (HSP 7 DIANA)",
+            "it": "Aggiunto supporto per KS01_V7.04-oKV (HSP 7 DIANA)",
+            "es": "Soporte agregado para KS01_V7.04-oKV (HSP 7 DIANA)",
+            "pl": "Dodano obsługę KS01_V7.04-oKV (HSP 7 DIANA)",
+            "zh-cn": "添加了对KS01_V7.04-oKV（HSP 7 DIANA）的支持"
           },
           "0.2.6": {
             "en": "Added support for KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
-            "de": "Unterstützung von KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)hinzugefügt"
+            "de": "Unterstützung von KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V5.12 (HSP 6 PALLAZZA-III 519.0).",
+            "pt": "Adicionado suporte para KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "fr": "Ajout de la prise en charge de KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "it": "Aggiunto supporto per KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "es": "Soporte agregado para KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "pl": "Dodano obsługę KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)",
+            "zh-cn": "添加了对KS01_V5.12（HSP 6 PALLAZZA-III 519.0）的支持"
           },
           "0.2.5": {
             "en": "Added support for KS01_V7.08 (HSP 6 Pelletto IV 434.08), refined some states",
-            "de": "Unterstützung von KS01_V7.08 (HSP 6 Pelletto IV 434.08) hinzugefügt, Zustände verfeinert"
+            "de": "Unterstützung von KS01_V7.08 (HSP 6 Pelletto IV 434.08) hinzugefügt, Zustände verfeinert",
+            "ru": "Добавлена поддержка KS01_V7.08 (HSP 6 Pelletto IV 434.08), доработаны некоторые состояния",
+            "pt": "Adicionado suporte para KS01_V7.08 (HSP 6 Pelletto IV 434.08), alguns estados refinados",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.08 (HSP 6 Pelletto IV 434.08), enkele staten verfijnd",
+            "fr": "Ajout du support pour KS01_V7.08 (HSP 6 Pelletto IV 434.08), affiné certains états",
+            "it": "Aggiunto supporto per KS01_V7.08 (HSP 6 Pelletto IV 434.08), perfezionato alcuni stati",
+            "es": "Soporte agregado para KS01_V7.08 (HSP 6 Pelletto IV 434.08), refinado algunos estados",
+            "pl": "Dodano obsługę KS01_V7.08 (HSP 6 Pelletto IV 434.08), poprawiono niektóre stany",
+            "zh-cn": "添加了对KS01_V7.08（HSP 6 Pelletto IV 434.08）的支持，完善了一些状态"
           },
           "0.2.4": {
             "en": "Added support for KS01_V7.07 (HSP 6 HELENA RLU), refined some states",
-            "de": "Unterstützung von KS01_V7.07 (HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert"
+            "de": "Unterstützung von KS01_V7.07 (HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert",
+            "ru": "Добавлена поддержка KS01_V7.07 (HSP 6 HELENA RLU), доработаны некоторые состояния",
+            "pt": "Adicionado suporte para KS01_V7.07 (HSP 6 HELENA RLU), alguns estados refinados",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.07 (HSP 6 HELENA RLU), enkele staten verfijnd",
+            "fr": "Ajout du support pour KS01_V7.07 (HSP 6 HELENA RLU), affiné certains états",
+            "it": "Aggiunto supporto per KS01_V7.07 (HSP 6 HELENA RLU), perfezionato alcuni stati",
+            "es": "Soporte agregado para KS01_V7.07 (HSP 6 HELENA RLU), refinado algunos estados",
+            "pl": "Dodano obsługę KS01_V7.07 (HSP 6 HELENA RLU), poprawiono niektóre stany",
+            "zh-cn": "添加了对KS01_V7.07（HSP 6 HELENA RLU）的支持，完善了一些状态"
           },
           "0.2.3": {
             "en": "Added support for KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "de": "Unterstützung von KS01_V7.06 (HSP 7 DIANA Plus RLU) hinzugefügt"
+            "de": "Unterstützung von KS01_V7.06 (HSP 7 DIANA Plus RLU) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V7.06 (HSP 7 DIANA Plus RLU).",
+            "pt": "Adicionado suporte para KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "fr": "Ajout de la prise en charge de KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "it": "Aggiunto supporto per KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "es": "Soporte agregado para KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "pl": "Dodano obsługę KS01_V7.06 (HSP 7 DIANA Plus RLU)",
+            "zh-cn": "添加了对KS01_V7.06（HSP 7 DIANA Plus RLU）的支持"
           },
           "0.2.2": {
             "en": "Added support for KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "de": "Unterstützung von KS01_V5.13 (HSP 2.17 PREMIUM) hinzugefügt"
+            "de": "Unterstützung von KS01_V5.13 (HSP 2.17 PREMIUM) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V5.13 (HSP 2.17 PREMIUM).",
+            "pt": "Adicionado suporte para KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "fr": "Ajout du support pour KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "it": "Aggiunto supporto per KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "es": "Soporte agregado para KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "pl": "Dodano obsługę KS01_V5.13 (HSP 2.17 PREMIUM)",
+            "zh-cn": "添加了对KS01_V5.13（HSP 2.17 PREMIUM）的支持"
           },
           "0.2.1": {
             "en": "Added missing state",
-            "de": "Fehlenden Zustand hinzugefügt"
+            "de": "Fehlenden Zustand hinzugefügt",
+            "ru": "Добавлено отсутствующее состояние",
+            "pt": "Adicionado estado ausente",
+            "nl": "Ontbrekende staat toegevoegd",
+            "fr": "État manquant ajouté",
+            "it": "Aggiunto stato mancante",
+            "es": "Estado faltante agregado",
+            "pl": "Dodano brakujący stan",
+            "zh-cn": "添加了缺失状态"
           },
           "0.2.0": {
             "en": "It is now possible to control the oven",
-            "de": "Steuerung des Ofens möglich"
+            "de": "Steuerung des Ofens möglich",
+            "ru": "Теперь можно управлять духовкой.",
+            "pt": "Agora é possível controlar o forno",
+            "nl": "Het is nu mogelijk om de oven te bedienen",
+            "fr": "Il est maintenant possible de contrôler le four",
+            "it": "È ora possibile controllare il forno",
+            "es": "Ahora es posible controlar el horno",
+            "pl": "Teraz można sterować piekarnikiem",
+            "zh-cn": "现在可以控制烤箱了"
           },
           "0.1.0": {
             "en": "First functional version",
-            "de": "Erste funktionale Version"
+            "de": "Erste funktionale Version",
+            "ru": "Первая функциональная версия",
+            "pt": "Primeira versão funcional",
+            "nl": "Eerste functionele versie",
+            "fr": "Première version fonctionnelle",
+            "it": "Prima versione funzionale",
+            "es": "Primera versión funcional",
+            "pl": "Pierwsza wersja funkcjonalna",
+            "zh-cn": "第一个功能版本"
           },
           "0.0.1": {
-              "en": "initial version",
-              "de": "Initiale Version"
+            "en": "initial version",
+            "de": "Initiale Version",
+            "ru": "Первоначальная версия",
+            "pt": "versão inicial",
+            "nl": "eerste versie",
+            "fr": "version initiale",
+            "it": "versione iniziale",
+            "es": "versión inicial",
+            "pl": "początkowa wersja",
+            "zh-cn": "初始版本"
           }
         },
 		"title": "Haas+Sohn",
