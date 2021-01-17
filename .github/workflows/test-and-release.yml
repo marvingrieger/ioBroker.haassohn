@@ -33,13 +33,13 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Perform a type check
-              run: npm run check
-              env:
-                  CI: true
+            #- name: Perform a type check
+            #  run: npm run check
+            #  env:
+            #      CI: true
 
-            - name: Lint TypeScript code
-              run: npm run lint
+            #- name: Lint TypeScript code
+            #  run: npm run lint
 
     # ===================
 
