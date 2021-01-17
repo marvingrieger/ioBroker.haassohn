@@ -191,7 +191,15 @@
         },
         "desc": {
             "en": "Enables controlling Haas+Sohn devices",
-            "de": "Ermöglicht die Steuerung von Haas+Sohn Geräten"
+            "de": "Ermöglicht die Steuerung von Haas+Sohn Geräten",
+            "ru": "Позволяет управлять устройствами Haas + Sohn",
+            "pt": "Permite controlar dispositivos Haas + Sohn",
+            "nl": "Maakt bediening van Haas + Sohn-apparaten mogelijk",
+            "fr": "Permet de contrôler les appareils Haas + Sohn",
+            "it": "Consente il controllo dei dispositivi Haas + Sohn",
+            "es": "Permite controlar dispositivos Haas + Sohn",
+            "pl": "Umożliwia sterowanie urządzeniami Haas + Sohn",
+            "zh-cn": "支持控制Haas + Sohn设备"
         },
         "authors": [
             "Marvin Grieger <github@marvingrieger.de>"
