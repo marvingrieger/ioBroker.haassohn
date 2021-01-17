@@ -1,5 +1,5 @@
 # HaasSohn
-The adapter enables to monitor and control Haas&Sohn devices.
+The adapter enables to monitor and control Haas&Sohn fireplaces.
 
 ## Configuration
 The configuration dialog of the adapter provides the following settings: 

@@ -205,8 +205,16 @@
             "Marvin Grieger <github@marvingrieger.de>"
         ],
         "docs": {
-            "en": "docs/en/admin.md",
-            "de": "docs/de/admin.md"
+            "en": "docs/en/haassohn.md",
+            "de": "docs/de/haassohn.md",
+            "ru": "docs/ru/haassohn.md",
+            "pt": "docs/pt/haassohn.md",
+            "nl": "docs/nl/haassohn.md",
+            "fr": "docs/fr/haassohn.md",
+            "it": "docs/it/haassohn.md",
+            "es": "docs/es/haassohn.md",
+            "pl": "docs/pl/haassohn.md",
+            "zh-cn": "docs/zh-cn/haassohn.md"
         },
         "platform": "Javascript/Node.js",
         "mode": "daemon",
