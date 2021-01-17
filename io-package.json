@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
           "1.0.1": {
             "en": "Support of compact mode",

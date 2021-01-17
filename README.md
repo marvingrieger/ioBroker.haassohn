@@ -21,6 +21,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.2
+* Fixed findings from code review
+
 ### 1.0.1
 * Support of compact mode
 

@@ -34,8 +34,8 @@
         // example: select elements with id=key and class=value and insert value
        if (!settings) return;
         $('.value').each(function () {
-            var $key = $(this);
-            var id = $key.attr('id');
+            let $key = $(this);
+            let id = $key.attr('id');
             if ($key.attr('type') === 'checkbox') {
 		// do not call onChange direct, because onChange could expect some arguments
                 $key.prop('checked', settings[id]).change(function() {
@@ -57,9 +57,9 @@
     // you have to make sure the callback is called with the settings object as first param!
     function save(callback) {
         // example: select elements with class=value and build settings object
-        var obj = {};
+        let obj = {};
         $('.value').each(function () {
-            var $this = $(this);
+            let $this = $(this);
 			if ($this.attr('type') === 'checkbox') {
 				obj[$this.attr('id')] = $this.prop('checked');
 			} else {

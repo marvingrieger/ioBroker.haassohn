@@ -1,6 +1,6 @@
 {
   "name": "iobroker.haassohn",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ioBroker Haas+Sohn Adapter",
   "author": {
     "name": "Marvin Grieger",
@@ -30,17 +30,16 @@
     "@iobroker/adapter-core": "^1.0.3"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "mocha": "^8.0.1",
-    "chai": "^4.2.0",
     "@iobroker/testing": "^2.3.0",
-    "eslint": "^7.3.0"
+    "chai": "^4.2.0",
+    "eslint": "^7.18.0",
+    "gulp": "^4.0.2",
+    "mocha": "^8.0.1"
   },
   "main": "main.js",
   "scripts": {
     "test": "npm run test:package && npm run test:unit",
     "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit"
   },
   "bugs": {
