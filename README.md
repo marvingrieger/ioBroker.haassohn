@@ -12,6 +12,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
 * HSP 8 Catania-II 444.08-ST (V5.10)
+* ?? (V7.02)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -21,6 +22,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.3
+* Added support for KS01_V7.02
+
 ### 1.0.2
 * Fixed findings from code review
 
