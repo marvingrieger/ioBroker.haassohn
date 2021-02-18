@@ -5,6 +5,7 @@
 
 This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
+* HSP 2.17 Premium III (V7.02)
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
 * HSP 6 HELENA RLU (V7.07)
@@ -12,7 +13,6 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
 * HSP 8 Catania-II 444.08-ST (V5.10)
-* ?? (V7.02)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -23,7 +23,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 
 ## Changelog
 ### 1.0.3
-* Added support for KS01_V7.02
+* Added support for KS01_V7.02 (HSP 2.17 Premium III)
 
 ### 1.0.2
 * Fixed findings from code review

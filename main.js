@@ -228,12 +228,15 @@ function updateConnectionStatus() {
 
     // Check if hardware / software combination is supported
     if (hw_version !== undefined && sw_version !== undefined) {
+    	adapter.log.debug('Validating Hardware / Software combination. Supported: ' + Object.getOwnPropertyNames(adapter.config.supportedHwSwVersions));
+    
         try {
-            if (!JSON.parse(adapter.config.supportedHwSwVersions)[hw_version + '_' + sw_version]) {
-                adapter.log.error('Hardware / Software version (' + hw_version + '_' + sw_version + ') is not supported by this adapter! Please open an issue on GitHub.');
+            if (!adapter.config.supportedHwSwVersions[hw_version + '_' + sw_version]) {
+            	adapter.log.debug('Hardware / Software combination is NOT supported by this adapter!');
+                adapter.log.error('Hardware / Software combination (' + hw_version + '_' + sw_version + ') is not supported by this adapter! Please open an issue on GitHub.');
                 disableAdapter = true;
             } else {
-                adapter.log.debug('Hardware / Software version is supported by this adapter! Please open an issue on GitHub.');
+                adapter.log.debug('Hardware / Software combination is supported by this adapter!');
             }
 
         } catch (err) {
@@ -261,7 +264,7 @@ function updateConnectionStatus() {
 
 // Synchronize the retrieved states with the states of the adapter
 function syncState(state, path) {
-    adapter.log.debug('Syncing state (' + state + ') with path (' + path + ') - ' + Array.isArray(state));
+    adapter.log.debug('Syncing state of the oven');
 
     try {
         // Iterate all elements
