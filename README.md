@@ -5,6 +5,7 @@
 
 This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
+* HSP 2.17 Premium III (V7.02)
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
 * HSP 6 HELENA RLU (V7.07)
@@ -21,6 +22,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.3
+* Added support for KS01_V7.02 (HSP 2.17 Premium III)
+
 ### 1.0.2
 * Fixed findings from code review
 
