@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "news": {
+          "1.0.4": {
+            "en": "Updated dependencies",
+    		"de": "Abhängigkeiten aktualisiert",
+    		"ru": "Обновленные зависимости",
+    		"pt": "Dependências atualizadas",
+    		"nl": "Bijgewerkte afhankelijkheden",
+    		"fr": "Dépendances mises à jour",
+    		"it": "Dipendenze aggiornate",
+    		"es": "Dependencias actualizadas",
+   		    "pl": "Zaktualizowane zależności",
+   		   "zh-cn": "更新的依赖项"
+          },
           "1.0.3": {
             "en": "Added support for KS01_V7.02 (HSP 2.17 Premium III)",
             "de": "Unterstützung von KS01_V7.02 (HSP 2.17 Premium III) hinzugefügt",

@@ -1,6 +1,6 @@
 {
   "name": "iobroker.haassohn",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ioBroker Haas+Sohn Adapter",
   "author": {
     "name": "Marvin Grieger",
@@ -25,15 +25,14 @@
     "url": "git+https://github.com/marvingrieger/ioBroker.haassohn.git"
   },
   "dependencies": {
+    "@iobroker/adapter-core": "^1.0.3",
     "md5": "^2.2.1",
-    "request": "^2.87.0",
-    "@iobroker/adapter-core": "^1.0.3"
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.3.0",
     "chai": "^4.2.0",
     "eslint": "^7.18.0",
-    "gulp": "^4.0.2",
     "mocha": "^8.0.1"
   },
   "main": "main.js",

@@ -22,6 +22,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.4
+* Updated dependencies
+
 ### 1.0.3
 * Added support for KS01_V7.02 (HSP 2.17 Premium III)
 
