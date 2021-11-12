@@ -9,7 +9,8 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * HSP 6 PALLAZZA-III 519.08 (V5.12)
 * HSP 6 PALLAZZA-III 534.08 (V6.02)
 * HSP 6 HELENA RLU (V7.07)
-* HSP 6 Pelletto IV 434.08 (V7.08)
+* HSP 6 Pelletto-IV Grande 434.08 (V7.08)
+* HSP 6 Pelletto-IV Grande 434.08 (V7.11)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
 * HSP 8 Catania-II 444.08-ST (V5.10)
@@ -22,6 +23,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.5
+* Added support for KS01_V7.11 (HSP 6 Pelletto-IV Grande 434.08)
+
 ### 1.0.4
 * Updated dependencies
 
@@ -50,7 +54,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * Added support for KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)
 
 ### 0.2.5
-* Added support for KS01_V7.08 (HSP 6 Pelletto IV 434.08)
+* Added support for KS01_V7.08 (HSP 6 Pelletto-IV Grande 434.08)
 * Refined some states
 
 ### 0.2.4
