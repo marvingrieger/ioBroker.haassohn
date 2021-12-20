@@ -5,16 +5,17 @@
 
 This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
-* HSP 2.17 Premium III (V7.02)
-* HSP 6 PALLAZZA-III (VV5.07)
-* HSP 6 PALLAZZA-III 519.08 (V5.12)
-* HSP 6 PALLAZZA-III 534.08 (V6.02)
+* HSP 2.17 PREMIUM III (V7.02)
+* HSP 6 PALLAZZA III (VV5.07)
+* HSP 6 PALLAZZA III 519.08 (V5.12)
+* HSP 6 PALLAZZA III 534.08 (V6.02)
 * HSP 6 HELENA RLU (V7.07)
-* HSP 6 Pelletto-IV Grande 434.08 (V7.08)
-* HSP 6 Pelletto-IV Grande 434.08 (V7.11)
+* HSP 6 PELLETTO IV Grande 434.08 (V7.08)
+* HSP 6 PELLETTO IV Grande 434.08 (V7.11)
+* HSP 6 PELLETTO IV 419.08 (V7.13)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
-* HSP 8 Catania-II 444.08-ST (V5.10)
+* HSP 8 CATANIA II 444.08-ST (V5.10)
 
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
@@ -24,17 +25,20 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.7
+* Added support for KS01_V7.13 (HSP 6 PELLETTO IV 419.08)
+
 ### 1.0.6
-* Added support for KS01_V5.07 (HSP 6 PALLAZZA-III)
+* Added support for KS01_V5.07 (HSP 6 PALLAZZA III)
 
 ### 1.0.5
-* Added support for KS01_V7.11 (HSP 6 Pelletto-IV Grande 434.08)
+* Added support for KS01_V7.11 (HSP 6 PELLETTO IV Grande 434.08)
 
 ### 1.0.4
 * Updated dependencies
 
 ### 1.0.3
-* Added support for KS01_V7.02 (HSP 2.17 Premium III)
+* Added support for KS01_V7.02 (HSP 2.17 PREMIUM III)
 
 ### 1.0.2
 * Fixed findings from code review
@@ -49,13 +53,13 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * Renamed adapter to iobroker.haassohn
 
 ### 0.2.8
-* Added support for KS01_V5.10 (HSP 8 Catania-II 444.08-ST)
+* Added support for KS01_V5.10 (HSP 8 CATANIA II 444.08-ST)
 
 ### 0.2.7
-* Added support for KS01_V7.04-oKV (HSP-7 DIANA)
+* Added support for KS01_V7.04-oKV (HSP 7 DIANA)
 
 ### 0.2.6
-* Added support for KS01_V5.12 (HSP 6 PALLAZZA-III 519.0)
+* Added support for KS01_V5.12 (HSP 6 PALLAZZA III 519.0)
 
 ### 0.2.5
 * Added support for KS01_V7.08 (HSP 6 Pelletto-IV Grande 434.08)
