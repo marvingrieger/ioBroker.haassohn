@@ -27,6 +27,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 ## Changelog
 ### 1.0.7
 * Added support for KS01_V7.13 (HSP 6 PELLETTO IV 419.08)
+* Updated dependencies
 
 ### 1.0.6
 * Added support for KS01_V5.07 (HSP 6 PALLAZZA III)
