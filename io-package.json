@@ -230,30 +230,6 @@
             "es": "Ahora es posible controlar el horno",
             "pl": "Teraz można sterować piekarnikiem",
             "zh-cn": "现在可以控制烤箱了"
-          },
-          "0.1.0": {
-            "en": "First functional version",
-            "de": "Erste funktionale Version",
-            "ru": "Первая функциональная версия",
-            "pt": "Primeira versão funcional",
-            "nl": "Eerste functionele versie",
-            "fr": "Première version fonctionnelle",
-            "it": "Prima versione funzionale",
-            "es": "Primera versión funcional",
-            "pl": "Pierwsza wersja funkcjonalna",
-            "zh-cn": "第一个功能版本"
-          },
-          "0.0.1": {
-            "en": "initial version",
-            "de": "Initiale Version",
-            "ru": "Первоначальная версия",
-            "pt": "versão inicial",
-            "nl": "eerste versie",
-            "fr": "version initiale",
-            "it": "versione iniziale",
-            "es": "versión inicial",
-            "pl": "początkowa wersja",
-            "zh-cn": "初始版本"
           }
         },
 		"title": "Haas+Sohn",
