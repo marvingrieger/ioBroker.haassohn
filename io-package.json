@@ -4,16 +4,16 @@
         "version": "1.0.8",
         "news": {
           "1.0.8": {
-            "en": "Added support for KS01_V6.01 (?)",
-            "de": "Unterstützung von KS01_V6.01 (?) hinzugefügt",
-            "ru": "Добавлена поддержка KS01_V6.01 (?).",
-            "pt": "Adicionado suporte para KS01_V6.01 (?)",
-            "nl": "Ondersteuning toegevoegd voor KS01_V6.01 (?)",
-            "fr": "Ajout de la prise en charge de KS01_V6.01 (?)",
-            "it": "Aggiunto supporto per KS01_V6.01 (?)",
-            "es": "Soporte agregado para KS01_V6.01 (?)",
-            "pl": "Dodano obsługę KS01_V6.01 (?)",
-            "zh-cn": "添加了对KS01_V6.01 (?) 的支持"
+            "en": "Added support for KS01_V6.01 (Hark Ecomat 6)",
+            "de": "Unterstützung von KS01_V6.01 (Hark Ecomat 6) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V6.01 (Hark Ecomat 6).",
+            "pt": "Adicionado suporte para KS01_V6.01 (Hark Ecomat 6)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V6.01 (Hark Ecomat 6)",
+            "fr": "Ajout de la prise en charge de KS01_V6.01 (Hark Ecomat 6)",
+            "it": "Aggiunto supporto per KS01_V6.01 (Hark Ecomat 6)",
+            "es": "Soporte agregado para KS01_V6.01 (Hark Ecomat 6)",
+            "pl": "Dodano obsługę KS01_V6.01 (Hark Ecomat 6)",
+            "zh-cn": "添加了对KS01_V6.01 (Hark Ecomat 6) 的支持"
           },
           "1.0.7": {
             "en": "Added support for KS01_V7.13 (HSP 6 PELLETTO IV 419.08)",

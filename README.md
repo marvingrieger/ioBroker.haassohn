@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/iobroker.haassohn.png)](https://npmjs.org/package/iobroker.haassohn)
 
-This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) devices:
+This adapter has been tested on the following [Haas+Sohn](https://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
 * HSP 2.17 PREMIUM III (V7.02)
 * HSP 6 PALLAZZA III (VV5.07)
@@ -17,6 +17,9 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 * HSP 7 DIANA (V7.04)
 * HSP 8 CATANIA II 444.08-ST (V5.10)
 
+This adapter has been tested on the following [Hark](https://www.hark.de) devices:
+* Hark Ecomat 6
+
 ## Features
 * All states of the device are read regularly (by polling) and represented in ioBroker
 * The polling interval, the IP address of the device as well as the device PIN can be configured
@@ -26,7 +29,7 @@ This adapter has been tested on the following [Haas+Sohn](http://haassohn.com) d
 
 ## Changelog
 ### 1.0.8
-* Added support for KS01_V6.01
+* Added support for KS01_V6.01 (Hark Ecomat 6)
 
 ### 1.0.7
 * Added support for KS01_V7.13 (HSP 6 PELLETTO IV 419.08)
