@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@iobroker/testing": "^2.3.0",
+    "@iobroker/adapter-dev": "^1.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.18.0",
     "mocha": "^9.2.0"
@@ -40,7 +41,8 @@
     "test": "npm run test:package && npm run test:unit",
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
-    "test:unit": "mocha test/unit --exit"
+    "test:unit": "mocha test/unit --exit",
+    "translate": "translate-adapter"
   },
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.haassohn/issues"
