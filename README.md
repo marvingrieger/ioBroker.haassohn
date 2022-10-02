@@ -30,6 +30,7 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 ## Changelog
 ### 1.0.8
 * Added support for KS01_V6.01 (Hark Ecomat 6)
+* Removed gulp, added adapter-dev and updated dependencies
 
 ### 1.0.7
 * Added support for KS01_V7.13 (HSP 6 PELLETTO IV 419.08)
