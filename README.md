@@ -28,6 +28,10 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.9
+* Added support for KS01_V6.07
+* Updated dependencies
+
 ### 1.0.8
 * Added support for KS01_V6.01 (Hark Ecomat 6)
 * Removed gulp, added adapter-dev and updated dependencies
