@@ -15,6 +15,7 @@ This adapter has been tested on the following [Haas+Sohn](https://haassohn.com) 
 * HSP 6 PELLETTO IV 419.08 (V7.13)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
+* HSP 7 (V6.07)
 * HSP 8 CATANIA II 444.08-ST (V5.10)
 
 This adapter has been tested on the following [Hark](https://www.hark.de) devices:
@@ -29,7 +30,7 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 
 ## Changelog
 ### 1.0.9
-* Added support for KS01_V6.07
+* Added support for KS01_V6.07 (HSP 7)
 * Updated dependencies
 
 ### 1.0.8
