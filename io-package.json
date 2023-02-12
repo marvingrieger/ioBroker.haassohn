@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.9",
+        "version": "1.0.10",
         "news": {
+          "1.0.10": {
+            "en": "Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "de": "Unterstützung von KS01_V7.08 (HSP 6 PELLETTO IV 419.08) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "pt": "Adicionado suporte para KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "fr": "Ajout de la prise en charge de KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "it": "Aggiunto supporto per KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "es": "Soporte agregado para KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "pl": "Dodano obsługę KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
+            "zh-cn": "添加了对KS01_V7.08 (HSP 6 PELLETTO IV 419.08) 的支持"
+          },
           "1.0.9": {
             "en": "Added support for KS01_V6.07 (HSP 7)",
             "de": "Unterstützung von KS01_V6.07 (HSP 7) hinzugefügt",
@@ -230,18 +242,6 @@
             "es": "Estado faltante agregado",
             "pl": "Dodano brakujący stan",
             "zh-cn": "添加了缺失状态"
-          },
-          "0.2.0": {
-            "en": "It is now possible to control the oven",
-            "de": "Steuerung des Ofens möglich",
-            "ru": "Теперь можно управлять духовкой.",
-            "pt": "Agora é possível controlar o forno",
-            "nl": "Het is nu mogelijk om de oven te bedienen",
-            "fr": "Il est maintenant possible de contrôler le four",
-            "it": "È ora possibile controllare il forno",
-            "es": "Ahora es posible controlar el horno",
-            "pl": "Teraz można sterować piekarnikiem",
-            "zh-cn": "现在可以控制烤箱了"
           }
         },
 		"title": "Haas+Sohn",

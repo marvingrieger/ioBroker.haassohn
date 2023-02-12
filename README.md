@@ -10,9 +10,8 @@ This adapter has been tested on the following [Haas+Sohn](https://haassohn.com) 
 * HSP 6 PALLAZZA III 519.08 (V5.12)
 * HSP 6 PALLAZZA III 534.08 (V6.02)
 * HSP 6 HELENA RLU (V7.07)
-* HSP 6 PELLETTO IV Grande 434.08 (V7.08)
-* HSP 6 PELLETTO IV Grande 434.08 (V7.11)
-* HSP 6 PELLETTO IV 419.08 (V7.13)
+* HSP 6 PELLETTO IV Grande 434.08 (V7.08 & V7.11)
+* HSP 6 PELLETTO IV 419.08 (V7.08 & V7.13)
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
 * HSP 7 (V6.07)
@@ -29,6 +28,10 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.10
+* Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08)
+* Updated dependencies
+
 ### 1.0.9
 * Added support for KS01_V6.07 (HSP 7)
 * Updated dependencies
@@ -103,7 +106,7 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2022 Marvin Grieger <github@marvingrieger.de>
+Copyright (c) 2023 Marvin Grieger <github@marvingrieger.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
