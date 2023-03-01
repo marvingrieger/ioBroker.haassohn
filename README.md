@@ -12,6 +12,7 @@ This adapter has been tested on the following [Haas+Sohn](https://haassohn.com) 
 * HSP 6 HELENA RLU (V7.07)
 * HSP 6 PELLETTO IV Grande 434.08 (V7.08 & V7.11)
 * HSP 6 PELLETTO IV 419.08 (V7.08 & V7.13)
+* HSP 6 WT RLU
 * HSP 7 DIANA Plus RLU (V7.06)
 * HSP 7 DIANA (V7.04)
 * HSP 7 (V6.07)
@@ -29,7 +30,7 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 
 ## Changelog
 ### 1.0.10
-* Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08)
+* Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08) and HSP 6 WT RLU
 * Updated dependencies
 * Added new states (tvl_temp & room_mode)
 
