@@ -573,6 +573,18 @@
           "native": {}
         },
         {
+          "_id": "device.tvl_temp",
+          "type": "state",
+          "common": {
+            "role": "value.temperature",
+            "name": "?",
+            "type": "number",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
           "_id": "device.ht_char",
           "type": "state",
           "common": {
@@ -615,6 +627,18 @@
             "role": "switch",
             "name": "Eco mode indicator",
             "type": "boolean",
+            "read": true,
+            "write": false
+          },
+          "native": {}
+        },
+        {
+          "_id": "device.room_mode",
+          "type": "state",
+          "common": {
+            "role": "text",
+            "name": "Room mode indicator",
+            "type": "string",
             "read": true,
             "write": false
           },
