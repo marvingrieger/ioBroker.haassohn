@@ -31,6 +31,7 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 ### 1.0.10
 * Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08)
 * Updated dependencies
+* Added new states (tvl_temp room_mode)
 
 ### 1.0.9
 * Added support for KS01_V6.07 (HSP 7)
