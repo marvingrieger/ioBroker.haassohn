@@ -577,7 +577,7 @@
           "type": "state",
           "common": {
             "role": "value.temperature",
-            "name": "?",
+            "name": "Solltemperatur der Wassertasche",
             "type": "number",
             "read": true,
             "write": false
