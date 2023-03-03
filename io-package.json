@@ -636,9 +636,9 @@
           "_id": "device.room_mode",
           "type": "state",
           "common": {
-            "role": "text",
+            "role": "switch",
             "name": "Room mode indicator",
-            "type": "string",
+            "type": "boolean",
             "read": true,
             "write": false
           },
