@@ -1,6 +1,6 @@
 {
   "name": "iobroker.haassohn",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "ioBroker Haas+Sohn Adapter",
   "author": {
     "name": "Marvin Grieger",

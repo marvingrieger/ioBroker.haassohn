@@ -5,6 +5,7 @@
 
 This adapter has been tested on the following [Haas+Sohn](https://haassohn.com) devices:
 * HSP 2.17 PREMIUM (V5.13)
+* HSP 2.17 PREMIUM (V7.01)
 * HSP 2.17 PREMIUM III (V7.02)
 * HSP 6 PALLAZZA III (VV5.07)
 * HSP 6 PALLAZZA III 519.08 (V5.12)
@@ -29,6 +30,10 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+### 1.0.11
+* Added support for KS01_V7.01 (HSP 2 Premium)
+* Updated dependencies
+
 ### 1.0.10
 * Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08) and HSP 6 WT RLU
 * Updated dependencies

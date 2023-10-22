@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.10",
+        "version": "1.0.11",
         "news": {
+          "1.0.10": {
+            "en": "Added support for KS01_V7.01 (HSP 2 Premium)",
+            "de": "Unterstützung von KS01_V7.01 (HSP 2 Premium) hinzugefügt",
+            "ru": "Добавлена поддержка KS01_V7.01 (HSP 2 Premium)",
+            "pt": "Adicionado suporte para KS01_V7.01 (HSP 2 Premium)",
+            "nl": "Ondersteuning toegevoegd voor KS01_V7.01 (HSP 2 Premium)",
+            "fr": "Ajout de la prise en charge de KS01_V7.01 (HSP 2 Premium)",
+            "it": "Aggiunto supporto per KS01_V7.01 (HSP 2 Premium)",
+            "es": "Soporte agregado para KS01_V7.01 (HSP 2 Premium)",
+            "pl": "Dodano obsługę KS01_V7.01 (HSP 2 Premium)",
+            "zh-cn": "添加了对KS01_V7.01 (HSP 2 Premium) 的支持"
+          },
           "1.0.10": {
             "en": "Added support for KS01_V7.08 (HSP 6 PELLETTO IV 419.08)",
             "de": "Unterstützung von KS01_V7.08 (HSP 6 PELLETTO IV 419.08) hinzugefügt",
@@ -230,18 +242,6 @@
             "es": "Soporte agregado para KS01_V5.13 (HSP 2.17 PREMIUM)",
             "pl": "Dodano obsługę KS01_V5.13 (HSP 2.17 PREMIUM)",
             "zh-cn": "添加了对KS01_V5.13（HSP 2.17 PREMIUM）的支持"
-          },
-          "0.2.1": {
-            "en": "Added missing state",
-            "de": "Fehlenden Zustand hinzugefügt",
-            "ru": "Добавлено отсутствующее состояние",
-            "pt": "Adicionado estado ausente",
-            "nl": "Ontbrekende staat toegevoegd",
-            "fr": "État manquant ajouté",
-            "it": "Aggiunto stato mancante",
-            "es": "Estado faltante agregado",
-            "pl": "Dodano brakujący stan",
-            "zh-cn": "添加了缺失状态"
           }
         },
 		"title": "Haas+Sohn",
@@ -303,6 +303,7 @@
             "KS01_V6.01": true,
             "KS01_V6.02": true,
             "KS01_V6.07": true,
+            "KS01_V7.01": true,
             "KS01_V7.02": true,
             "KS01_V7.04-oKV": true,
             "KS01_V7.06": true,
