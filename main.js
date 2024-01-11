@@ -116,7 +116,7 @@ function handleStateChange(id, state) {
                 pollDeviceStatus();
             });
         } else if (String(id) === (adapter.namespace + '.device.sp_temp')) {
-            // Set new program
+            // Set new target temperature
             const post_data_sp_temp = '{"sp_temp":' + state.val + '}';
 
             // Perform request
@@ -140,9 +140,35 @@ function handleStateChange(id, state) {
                 // Poll new state to update nonce immediately
                 pollDeviceStatus();
             });
+        } else if (String(id) === (adapter.namespace + '.device.eco_mode')) {
+            // Set new eco mode
+            const post_data_eco_mode = '{"eco_mode":' + state.val + '}';
+
+            // Perform request
+            request.post({
+                headers: createHeader(post_data_eco_mode),
+                url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
+                body:    post_data_eco_mode
+            }, function(error, response, body) {
+                adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+
+                // POST was successful, perform ack
+                if (error === null && response.statusCode === 200) {
+                    // Acknowledge command
+                    adapter.setState(adapter.namespace + '.device.eco_mode', state.val, true);
+                // POST was not successful, revert
+                } else {
+                    adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                    adapter.log.error('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+                }
+
+                // Poll new state to update nonce immediately
+                pollDeviceStatus();
+            });
         }
     }
 }
+
 
 // Main function to poll the device status
 function pollDeviceStatus() {
