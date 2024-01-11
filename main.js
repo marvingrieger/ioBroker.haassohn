@@ -201,6 +201,13 @@ function updateConnectionStatus() {
     if (noOfConnectionErrors > 0) {
         adapter.log.error('There was an error getting the device status (counter: ' + noOfConnectionErrors + ')');
     }
+	
+	 // Restart adapter after 3 failed attempts
+    if (noOfConnectionErrors >= 3) {
+        adapter.log.warn('Reached 3 connection attempts. Restarting adapter...');
+        adapter.terminate('Restarting adapter after 3 failed connection attempts', 11);
+        return; // Stop further execution
+    }
 
     // Query current connection indicator to check whether something changed at all
     adapter.getState('info.connection', function (err, state) {

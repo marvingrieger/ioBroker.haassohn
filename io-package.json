@@ -629,7 +629,7 @@
             "name": "Eco mode indicator",
             "type": "boolean",
             "read": true,
-            "write": false
+            "write": true
           },
           "native": {}
         },
