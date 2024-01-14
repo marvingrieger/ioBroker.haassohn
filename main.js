@@ -141,34 +141,45 @@ function handleStateChange(id, state) {
                 pollDeviceStatus();
             });
         } else if (String(id) === (adapter.namespace + '.device.eco_mode')) {
-            // Set new eco mode
-            const post_data_eco_mode = '{"eco_mode":' + state.val + '}';
-
-            // Perform request
-            request.post({
-                headers: createHeader(post_data_eco_mode),
-                url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
-                body:    post_data_eco_mode
-            }, function(error, response, body) {
-                adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
-
-                // POST was successful, perform ack
-                if (error === null && response.statusCode === 200) {
-                    // Acknowledge command
-                    adapter.setState(adapter.namespace + '.device.eco_mode', state.val, true);
-                // POST was not successful, revert
-                } else {
-                    adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
-                    adapter.log.error('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+            // Check if eco mode is editable before sending command
+            adapter.getState('device.meta.eco_editable', function (err, ecoEditableState) {
+                if (err) {
+                    adapter.log.error('Error getting eco_editable state: ' + err);
+                    return;
                 }
 
-                // Poll new state to update nonce immediately
-                pollDeviceStatus();
-            });
-        }
-    }
-}
+                if (ecoEditableState && ecoEditableState.val) {
+                    // Eco mode is editable, proceed with setting new eco mode
+                    const post_data_eco_mode = '{"eco_mode":' + state.val + '}';
+					                // Perform request
+                request.post({
+                    headers: createHeader(post_data_eco_mode),
+                    url:     'http://' + adapter.config.fireplaceAddress + '/status.cgi',
+                    body:    post_data_eco_mode
+                }, function(error, response, body) {
+                    adapter.log.debug('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
 
+                    // POST was successful, perform ack
+                    if (error === null && response.statusCode === 200) {
+                        // Acknowledge command
+                        adapter.setState(adapter.namespace + '.device.eco_mode', state.val, true);
+                    // POST was not successful, revert
+                    } else {
+                        adapter.log.error('stateChange (command): ' + id + ' ' + JSON.stringify(state) + ' was not successful');
+                        adapter.log.error('POST response: ' + response + ' [RESPONSE]; ' + body + ' [BODY]; ' + error + ' [ERROR];');
+                    }
+
+                    // Poll new state to update nonce immediately
+                    pollDeviceStatus();
+                });
+            } else {
+                // Eco mode is not editable, log and ignore the command
+                adapter.log.warn('Eco mode is not editable. Ignoring command to change eco mode.');
+            }
+        });
+    }
+	}
+}
 
 // Main function to poll the device status
 function pollDeviceStatus() {
@@ -297,12 +308,12 @@ function syncState(state, path) {
         Object.keys(state).forEach(function(key) {
             // If value is an object: recurse
             if (typeof state[key] === 'object' && !Array.isArray(state[key])) {
-                const newPath = path === '' ? key  : path + '.' + key;
+                const newPath = path === '' ? key : path + '.' + key;
                 syncState(state[key], newPath);
             // If value is atomic: process state
             } else {
                 // Calculate stateName
-                const stateName = path === '' ? 'device.' + key  : 'device.' + path + '.' + key;
+                const stateName = path === '' ? 'device.' + key : 'device.' + path + '.' + key;
                 const value = state[key];
 
                 // Store retrieved state in central data structure
@@ -375,10 +386,20 @@ function syncState(state, path) {
                         });
                     // Object does not exist, implicates error in data model
                     } else {
-                        adapter.log.warn('State ' + stateName + ' does not exist. Please open an issue on GitHub..');
+                        adapter.log.warn('State ' + stateName + ' does not exist. Please open an issue on GitHub.');
 
                         // Indicate that state is missing
                         missingState = true;
+                    }
+
+                    // Special handling for eco_editable
+                    if (stateName === 'device.meta.eco_editable') {
+                        adapter.getObject('device.eco_mode', function (err, obj) {
+                            if (obj) {
+                                obj.common.write = newState.value;
+                                adapter.setObject('device.eco_mode', obj);
+                            }
+                        });
                     }
                 });
             }
@@ -389,6 +410,7 @@ function syncState(state, path) {
         disableAdapter = true;
     }
 }
+
 
 // Given the HPIN and the current NONCE, the HSPIN is calculated
 // HSPIN = MD5(NONCE + HPIN)

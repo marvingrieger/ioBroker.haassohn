@@ -1,19 +1,19 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.13",
+        "version": "1.0.14",
         "news": {
-		  "1.0.13": {
-			"en": "Added ECO mode to be writable and added default restart adapter in case of >=3 connection failures",
-			"de": "ECO-Modus als beschreibbar hinzugefügt und standardmäßigen Neustart des Adapters bei >=3 Verbindungsfehlern hinzugefügt",
-			"ru": "Добавлена возможность записи в режим ECO и автоматический перезапуск адаптера при >=3 ошибках подключения",
-			"pt": "Adicionado modo ECO para ser gravável e reinício padrão do adaptador em caso de falhas de conexão >=3",
-			"nl": "ECO-modus toegevoegd om te kunnen schrijven en standaard adapterherstart bij >=3 verbindingsfouten",
-			"fr": "Ajout du mode ECO comme modifiable et redémarrage par défaut de l'adaptateur en cas de >=3 échecs de connexion",
-			"it": "Aggiunto modalità ECO per essere scrivibile e riavvio predefinito dell'adattatore in caso di >=3 errori di connessione",
-			"es": "Añadido modo ECO para ser escribible y reinicio por defecto del adaptador en caso de >=3 fallos de conexión",
-			"pl": "Dodano tryb ECO jako zapisywalny i domyślny restart adaptera w przypadku >=3 błędów połączenia",
-			"zh-cn": "添加了ECO模式可写入，并在>=3次连接失败时添加了默认适配器重启"
+		  "1.0.14": {
+			"en": "Added ECO mode to be writable",
+			"de": "ECO-Modus als beschreibbar hinzugefügt",
+			"ru": "Добавлена возможность записи в режим ECO ",
+			"pt": "Adicionado modo ECO para ser gravável",
+			"nl": "ECO-modus toegevoegd om te kunnen schrijven",
+			"fr": "Ajout du mode ECO comme modifiable",
+			"it": "Aggiunto modalità ECO per essere scrivibile",
+			"es": "Añadido modo ECO para ser escribible",
+			"pl": "Dodano tryb ECO jako zapisywalny",
+			"zh-cn": "添加了ECO模式可写入"
           },
 		  "1.0.11": {
             "en": "Added support for KS01_V7.01 (HSP 2 Premium)",
@@ -472,6 +472,19 @@
           },
           "native": {}
         },
+		{
+          "_id": "device.meta.eco_editable",
+          "type": "state",
+          "common": {
+            "name": "Eco Editable Status",
+            "type": "boolean",
+            "role": "switch",
+            "read": true,
+            "write": false,
+            "desc": "Indicates if eco mode is editable"
+          },
+          "native": {}
+        },
         {
           "_id": "device.prg",
           "type": "state",
@@ -605,11 +618,11 @@
             "name": "Eco mode indicator",
             "type": "boolean",
             "read": true,
-            "write": false
+            "write": true
           },
           "native": {}
         },
-        {
+		{
           "_id": "device.room_mode",
           "type": "state",
           "common": {
