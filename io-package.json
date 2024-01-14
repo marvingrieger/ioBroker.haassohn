@@ -1,9 +1,21 @@
 {
     "common": {
         "name": "haassohn",
-        "version": "1.0.11",
+        "version": "1.0.14",
         "news": {
-          "1.0.10": {
+		  "1.0.14": {
+			"en": "Added ECO mode to be writable",
+			"de": "ECO-Modus als beschreibbar hinzugefügt",
+			"ru": "Добавлена возможность записи в режим ECO ",
+			"pt": "Adicionado modo ECO para ser gravável",
+			"nl": "ECO-modus toegevoegd om te kunnen schrijven",
+			"fr": "Ajout du mode ECO comme modifiable",
+			"it": "Aggiunto modalità ECO per essere scrivibile",
+			"es": "Añadido modo ECO para ser escribible",
+			"pl": "Dodano tryb ECO jako zapisywalny",
+			"zh-cn": "添加了ECO模式可写入"
+          },
+		  "1.0.11": {
             "en": "Added support for KS01_V7.01 (HSP 2 Premium)",
             "de": "Unterstützung von KS01_V7.01 (HSP 2 Premium) hinzugefügt",
             "ru": "Добавлена поддержка KS01_V7.01 (HSP 2 Premium)",
@@ -206,42 +218,6 @@
             "es": "Soporte agregado para KS01_V7.08 (HSP 6 Pelletto IV 434.08), refinado algunos estados",
             "pl": "Dodano obsługę KS01_V7.08 (HSP 6 Pelletto IV 434.08), poprawiono niektóre stany",
             "zh-cn": "添加了对KS01_V7.08（HSP 6 Pelletto IV 434.08）的支持，完善了一些状态"
-          },
-          "0.2.4": {
-            "en": "Added support for KS01_V7.07 (HSP 6 HELENA RLU), refined some states",
-            "de": "Unterstützung von KS01_V7.07 (HSP 6 HELENA RLU) hinzugefügt, Zustände verfeinert",
-            "ru": "Добавлена поддержка KS01_V7.07 (HSP 6 HELENA RLU), доработаны некоторые состояния",
-            "pt": "Adicionado suporte para KS01_V7.07 (HSP 6 HELENA RLU), alguns estados refinados",
-            "nl": "Ondersteuning toegevoegd voor KS01_V7.07 (HSP 6 HELENA RLU), enkele staten verfijnd",
-            "fr": "Ajout du support pour KS01_V7.07 (HSP 6 HELENA RLU), affiné certains états",
-            "it": "Aggiunto supporto per KS01_V7.07 (HSP 6 HELENA RLU), perfezionato alcuni stati",
-            "es": "Soporte agregado para KS01_V7.07 (HSP 6 HELENA RLU), refinado algunos estados",
-            "pl": "Dodano obsługę KS01_V7.07 (HSP 6 HELENA RLU), poprawiono niektóre stany",
-            "zh-cn": "添加了对KS01_V7.07（HSP 6 HELENA RLU）的支持，完善了一些状态"
-          },
-          "0.2.3": {
-            "en": "Added support for KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "de": "Unterstützung von KS01_V7.06 (HSP 7 DIANA Plus RLU) hinzugefügt",
-            "ru": "Добавлена поддержка KS01_V7.06 (HSP 7 DIANA Plus RLU).",
-            "pt": "Adicionado suporte para KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "nl": "Ondersteuning toegevoegd voor KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "fr": "Ajout de la prise en charge de KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "it": "Aggiunto supporto per KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "es": "Soporte agregado para KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "pl": "Dodano obsługę KS01_V7.06 (HSP 7 DIANA Plus RLU)",
-            "zh-cn": "添加了对KS01_V7.06（HSP 7 DIANA Plus RLU）的支持"
-          },
-          "0.2.2": {
-            "en": "Added support for KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "de": "Unterstützung von KS01_V5.13 (HSP 2.17 PREMIUM) hinzugefügt",
-            "ru": "Добавлена поддержка KS01_V5.13 (HSP 2.17 PREMIUM).",
-            "pt": "Adicionado suporte para KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "nl": "Ondersteuning toegevoegd voor KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "fr": "Ajout du support pour KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "it": "Aggiunto supporto per KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "es": "Soporte agregado para KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "pl": "Dodano obsługę KS01_V5.13 (HSP 2.17 PREMIUM)",
-            "zh-cn": "添加了对KS01_V5.13（HSP 2.17 PREMIUM）的支持"
           }
         },
 		"title": "Haas+Sohn",
@@ -496,6 +472,19 @@
           },
           "native": {}
         },
+		{
+          "_id": "device.meta.eco_editable",
+          "type": "state",
+          "common": {
+            "name": "Eco Editable Status",
+            "type": "boolean",
+            "role": "switch",
+            "read": true,
+            "write": false,
+            "desc": "Indicates if eco mode is editable"
+          },
+          "native": {}
+        },
         {
           "_id": "device.prg",
           "type": "state",
@@ -629,11 +618,11 @@
             "name": "Eco mode indicator",
             "type": "boolean",
             "read": true,
-            "write": false
+            "write": true
           },
           "native": {}
         },
-        {
+		{
           "_id": "device.room_mode",
           "type": "state",
           "common": {
