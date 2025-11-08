@@ -121,7 +121,10 @@
         "type": "iot-systems",
         "connectionType": "local",
         "dataSource": "poll",
-        "license": "MIT",
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
         "compact": true
     },
     "native": {
