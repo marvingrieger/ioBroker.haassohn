@@ -110,6 +110,8 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 ### 0.0.1
 * Initial release. The adapter is not functional yet.
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 The MIT License (MIT)
 
