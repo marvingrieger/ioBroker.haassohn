@@ -30,6 +30,9 @@ This adapter has been tested on the following [Hark](https://www.hark.de) device
 * The device can be controlled: it can be turned on and off (*prg*) and the desired temperature (*sp_temp*) can be set
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 22 now.
 ### 1.0.11
 * Added support for KS01_V7.01 (HSP 2 Premium)
 * Updated dependencies
